@@ -18,6 +18,8 @@ in
       kdePackages.qt6ct
       libsForQt5.qt5ct
       networkmanagerapplet
+      # noctalia schema installation
+      python3
       wayclip
     ] ++desktop.extraHomePackages ++desktop.noctalia.extraHomePackages;
     home.file.".config/qt6ct/qt6ct.conf".text = lib.generators.toINI {} {
