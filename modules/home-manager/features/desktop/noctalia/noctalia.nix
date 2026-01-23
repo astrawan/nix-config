@@ -193,6 +193,7 @@ in
           hyprland = if (desktop.noctalia.compositor == "hyprland") then true else false;
           mango = false;
           zed = false;
+          zenBrowser = true;
           helix = false;
           enableUserTemplates = false;
         };
