@@ -11,6 +11,16 @@
       description = "Default desktop to use";
       example = "gnome";
     };
+    defaultWebBrowser = lib.mkOption {
+      type = lib.types.enum [
+        "brave"
+        "librewolf"
+        "zen-browser"
+      ];
+      default = "zen-browser";
+      description = "Default Web Browser";
+      example = "zen-browser";
+    };
     extraPackages = lib.mkOption {
       type = with lib.types; listOf package;
       default = [ ];

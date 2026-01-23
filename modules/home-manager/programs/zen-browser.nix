@@ -56,7 +56,24 @@ in
             id = 9;
           };
         };
+        settings = {
+          "browser.startup.page" = 0;
+          "browser.urlbar.placeholderName" = "DuckDuckGo";
+          "browser.urlbar.placeholderName.private" = "DuckDuckGo";
+          "sidebar.visibility" = "hide-sidebar";
+          "zen.view.compact.enable-at-startup" = true;
+          "zen.view.use-single-toolbar" = false;
+          "zen.welcome-screen.seen" = true;
+        };
       };
+    };
+
+    xdg.mimeApps.defaultApplications = lib.mkIf (config.devlive.features.desktop.defaultWebBrowser == "zen-browser") {
+      "text/html" = "zen-beta.desktop";
+      "x-scheme-handler/http" = "zen-beta.desktop";
+      "x-scheme-handler/https" = "zen-beta.desktop";
+      "x-scheme-handler/about" = "zen-beta.desktop";
+      "x-scheme-handler/unknown" = "zen-beta.desktop";
     };
   };
 }
