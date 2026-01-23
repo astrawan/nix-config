@@ -14,6 +14,7 @@ in
       bazaar
       # noctalia gtk4 color schema integration
       glib
+      jellyfin-tui
       kdePackages.breeze-icons
       kdePackages.qt6ct
       libsForQt5.qt5ct
