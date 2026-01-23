@@ -43,8 +43,8 @@ binds {
     Mod+Shift+Ctrl+K                                                                                 { move-column-to-monitor-up;                               }
     Mod+Shift+Ctrl+L                                                                                 { move-column-to-monitor-right;                            }
 
-    Mod+W                                                                                            { spawn    "brave";                                        }
-    Mod+Shift+W                                                                                      { spawn    "zen-beta";                                     }
+    Mod+W                                                                                            { spawn    "zen-beta";                                     }
+    Mod+Shift+W                                                                                      { spawn    "brave";                                        }
 
     Mod+1                                                                                            { focus-workspace 1;                                       }
     Mod+2                                                                                            { focus-workspace 2;                                       }
