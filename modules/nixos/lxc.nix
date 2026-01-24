@@ -7,6 +7,11 @@ in
   config = lib.mkIf cfg.enable {
     nix.settings.sandbox = false;
 
+    proxmoxLXC = {
+      manageNetwork = false;
+      privileged = true;
+    };
+
     services.fstrim.enable = false; # Let Proxmox host handle fstrim
     security.pam.services.sshd.allowNullPassword = true;
     services.openssh = {

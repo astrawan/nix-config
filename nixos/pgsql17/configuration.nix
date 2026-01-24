@@ -9,11 +9,6 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "${config.devlive.host.defaultLocale}";
 
-  proxmoxLXC = {
-    manageNetwork = false;
-    privileged = true;
-  };
-
   environment.systemPackages = with pkgs; [
     python3
     rclone
