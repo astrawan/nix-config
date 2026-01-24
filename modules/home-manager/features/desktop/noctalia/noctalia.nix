@@ -2,9 +2,6 @@
 
 let
   desktop = config.devlive.features.desktop;
-  yaziPlugins = {
-    gvfs = (pkgs.callPackage ../../../../../pkgs/yazi/plugins/gvfs.nix {});
-  };
 in
 {
   config = lib.mkIf (desktop.type == "noctalia") {
@@ -317,7 +314,7 @@ in
       plugins = {
         chmod = pkgs.yaziPlugins.chmod;
         full-border = pkgs.yaziPlugins.full-border;
-        gvfs = yaziPlugins.gvfs;
+        gvfs = pkgs.yaziPlugins.gvfs;
         mount = pkgs.yaziPlugins.mount;
         recycle-bin = pkgs.yaziPlugins.recycle-bin;
         toggle-pane = pkgs.yaziPlugins.toggle-pane;

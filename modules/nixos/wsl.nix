@@ -7,5 +7,7 @@ in
   config = lib.mkIf cfg.enable {
     wsl.enable = true;
     wsl.defaultUser = config.devlive.user.name;
+
+    devlive.host.type = "wsl";
   };
 }

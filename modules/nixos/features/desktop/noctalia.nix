@@ -2,7 +2,6 @@
 
 let
   desktop = config.devlive.features.desktop;
-  sddm-noctalia = (pkgs.callPackage ../../../../pkgs/sddm-noctalia.nix {});
 in
 {
   config = lib.mkIf (desktop.type == "noctalia") {
@@ -33,7 +32,7 @@ in
     };
     services.displayManager.sddm = {
       enable = true;
-      extraPackages = [
+      extraPackages = with pkgs; [
         sddm-noctalia
       ];
       package = pkgs.kdePackages.sddm;
@@ -46,7 +45,7 @@ in
           DisplayServer = "wayland";
         };
         Theme = {
-          ThemeDir = "${sddm-noctalia}/share/sddm/themes";
+          ThemeDir = "${pkgs.sddm-noctalia}/share/sddm/themes";
         };
       };
       theme = "noctalia";

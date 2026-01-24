@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  config = lib.mkIf (!config.devlive.wsl.enable) {
+  config = lib.mkIf (config.devlive.host.type == "workstation") {
     # Bootloader.
     boot.loader.systemd-boot.enable = true;
     # boot.loader.grub = {
@@ -29,11 +29,11 @@
       "udev.log_priority=3"
       "rd.systemd.show_status=auto"
     ];
-  boot.blacklistedKernelModules = [ "mmc_block" ];
-    boot.plymouth = {
-      enable = true;
-      theme = "bgrt";
-    };
+    boot.blacklistedKernelModules = [ "mmc_block" ];
+      boot.plymouth = {
+        enable = true;
+        theme = "bgrt";
+      };
 
     # boot.loader.timeout = 0;
   };

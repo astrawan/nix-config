@@ -3,11 +3,11 @@
 {
   options.devlive.features.desktop = {
     type = lib.mkOption {
-      type = lib.types.enum [
+      type = lib.types.nullOr (lib.types.enum [
         "gnome"
         "noctalia"
-      ];
-      default = "gnome";
+      ]);
+      default = null;
       description = "Default desktop to use";
       example = "gnome";
     };
