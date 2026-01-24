@@ -25,6 +25,7 @@
             nixos-wsl.nixosModules.default
             ({ ... }: {
               imports = [
+                ./overlays/workstation.nix
                 ./modules/options
                 ./modules/nixos
                 ./profiles/astra/options.nix
@@ -40,6 +41,7 @@
             nixos-wsl.nixosModules.default
             ({ ... }: {
               imports = [
+                ./overlays/workstation.nix
                 ./modules/options
                 ./modules/nixos
                 ./profiles/astra/options.nix
@@ -64,6 +66,21 @@
             })
           ];
         };
+        pgsql17 = lib.nixosSystem {
+          inherit system;
+          modules = [
+            nixos-wsl.nixosModules.default
+            ({ modulesPath, ... }: {
+              imports = [
+                (modulesPath + "/virtualisation/proxmox-lxc.nix")
+                ./modules/options
+                ./modules/nixos
+                ./profiles/infra/options.nix
+                ./nixos/pgsql17/configuration.nix
+              ];
+            })
+          ];
+        };
       };
       homeConfigurations = {
         astra = home-manager.lib.homeManagerConfiguration {
@@ -73,6 +90,7 @@
               imports = [
                 noctalia.homeModules.default
                 zen-browser.homeModules.beta
+                ./overlays/workstation.nix
                 ./modules/options
                 ./modules/home-manager
                 ./profiles/astra/options.nix

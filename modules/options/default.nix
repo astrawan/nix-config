@@ -2,6 +2,8 @@
   imports = [
     ./features
     ./host.nix
+    ./infra
+    ./lxc.nix
     ./programs
     ./security
     ./services

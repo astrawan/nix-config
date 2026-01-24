@@ -1,6 +1,8 @@
 {
   imports = [
     ./features
+    ./infra
+    ./lxc.nix
     ./programs
     ./security
     ./services
