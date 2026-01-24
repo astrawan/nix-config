@@ -1,6 +1,7 @@
 { config, lib, ... }:
 
 let
+  desktop = config.devlive.features.desktop;
   cfg = config.devlive.services.opensnitch;
 in 
 {
@@ -64,6 +65,19 @@ in
 
         [statsDialog]
       '';
+    };
+
+    # make sure tray system is ready
+    systemd.user.services.opensnitch-ui.Service.Restart = "on-failure";
+    systemd.user.services.opensnitch-ui.Unit = {
+      After = [
+        "tray.target"
+      ]
+      ++(if desktop.type == "noctalia" then [ "noctalia-shell.service" ] else []);
+      Requires = [
+        "tray.target"
+      ]
+      ++(if desktop.type == "noctalia" then [ "noctalia-shell.service" ] else []);
     };
   };
 }
