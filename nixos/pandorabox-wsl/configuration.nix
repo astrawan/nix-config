@@ -10,6 +10,8 @@
 {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  networking.hostName = "pandorabox-wsl"; # Define your hostname.
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It's perfectly fine and recommended to leave
