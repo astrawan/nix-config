@@ -2,7 +2,6 @@
   imports = [
     ./features
     ./infra
-    ./lxc.nix
     ./programs
     ./security
     ./services
@@ -10,6 +9,5 @@
     ./boot.nix
     ./networking.nix
     ./users.nix
-    ./wsl.nix
   ];
 }

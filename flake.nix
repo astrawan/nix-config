@@ -22,7 +22,6 @@
         pandorabox = lib.nixosSystem {
           inherit system;
           modules = [
-            nixos-wsl.nixosModules.default
             ({ ... }: {
               imports = [
                 ./overlays/workstation.nix
@@ -38,7 +37,6 @@
         pandorabox-v2 = lib.nixosSystem {
           inherit system;
           modules = [
-            nixos-wsl.nixosModules.default
             ({ ... }: {
               imports = [
                 ./overlays/workstation.nix
@@ -59,6 +57,7 @@
               imports = [
                 ./modules/options
                 ./modules/nixos
+                ./modules/nixos/wsl.nix
                 ./profiles/astra/options.nix
                 ./profiles/astra/extra-wsl-options.nix
                 ./nixos/pandorabox-wsl/configuration.nix
@@ -69,12 +68,12 @@
         pgsql17 = lib.nixosSystem {
           inherit system;
           modules = [
-            nixos-wsl.nixosModules.default
             ({ modulesPath, ... }: {
               imports = [
                 (modulesPath + "/virtualisation/proxmox-lxc.nix")
                 ./modules/options
                 ./modules/nixos
+                ./modules/nixos/lxc.nix
                 ./profiles/infra/options.nix
                 ./nixos/pgsql17/configuration.nix
               ];
