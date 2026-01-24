@@ -65,5 +65,16 @@ in
         [statsDialog]
       '';
     };
+
+    # make sure tray system is ready
+    systemd.user.services.opensnitch-ui.Unit = {
+      After = [
+        "tray.target"
+      ]
+      ++(if config.devlive.features.desktop.type == "noctalia" then [ "noctalia-shell.service" ] else []);
+      Requires = [
+        "tray.target"
+      ];
+    };
   };
 }
