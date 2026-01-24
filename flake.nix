@@ -104,6 +104,8 @@
           modules = [
             ({ ... }: {
               imports = [
+                noctalia.homeModules.default
+                zen-browser.homeModules.beta
                 ./modules/options
                 ./modules/home-manager
                 ./profiles/astra/options.nix
