@@ -4,11 +4,13 @@ let
   cfg = config.devlive.features.devel-utils;
 in
 {
+  imports = [
+    ../../common/features/devel-utils.nix
+  ];
+
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
-      ast-grep
       inotify-tools
-      tree-sitter
     ]
     ++ (
       if config.devlive.features.desktop.type == "gnome" then
@@ -16,12 +18,5 @@ in
       else
         []
     );
-
-    programs.fd.enable = true;
-    programs.fzf.enable = true;
-    programs.neovim.enable = true;
-    programs.ripgrep.enable = true;
-
-    devlive.programs.lazygit.enable = true;
   };
 }

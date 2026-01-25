@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  config = lib.mkIf (config.devlive.host.type == "workstation") {
+  config = {
     # Bootloader.
     boot.loader.systemd-boot.enable = true;
     # boot.loader.grub = {
