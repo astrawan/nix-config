@@ -8,7 +8,7 @@
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "${config.devlive.user.name}";
-  home.homeDirectory = "/home/${config.devlive.user.name}";
+  home.homeDirectory = if pkgs.stdenv.hostPlatform.isDarwin then "/Users/${config.devlive.user.name}" else "/home/${config.devlive.user.name}";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -53,7 +53,7 @@
   home.sessionVariables = {
     EDITOR = "vim";
   };
-  xdg.mimeApps.enable = true;
+  xdg.mimeApps.enable = lib.mkIf(!pkgs.stdenv.hostPlatform.isDarwin) true;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

@@ -21,6 +21,4 @@
 
   devlive.programs.bash.enable = true;
   devlive.programs.gnupg.enable = true;
-
-  devlive.virtualisation.podman.enable = true;
 }

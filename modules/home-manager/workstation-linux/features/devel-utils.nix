@@ -4,10 +4,6 @@ let
   cfg = config.devlive.features.devel-utils;
 in
 {
-  imports = [
-    ../../common/features/devel-utils.nix
-  ];
-
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       inotify-tools

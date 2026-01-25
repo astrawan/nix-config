@@ -47,7 +47,6 @@ in
   devlive.features.devel-android.enable = true;
   devlive.features.yubikey.enable = true;
 
-  devlive.programs.bash.enable = true;
   devlive.programs.brave.enable = true;
   devlive.programs.deja-dup = {
     enable = true;
@@ -76,5 +75,6 @@ in
   devlive.services.usbguard.enable = true;
 
   devlive.virtualisation.libvirtd.enable = true;
+  devlive.virtualisation.podman.enable = true;
   devlive.virtualisation.waydroid.enable = true;
 }

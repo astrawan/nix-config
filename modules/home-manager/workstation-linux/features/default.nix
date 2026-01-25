@@ -1,5 +1,6 @@
 {
   imports = [
+    ../../common/features
     ./core-utils.nix
     ./desktop
     ./devel-android.nix
