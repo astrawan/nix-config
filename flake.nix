@@ -26,9 +26,8 @@
               imports = [
                 ./overlays/workstation.nix
                 ./modules/options
-                ./modules/nixos
-                ./profiles/astra/options.nix
-                ./profiles/astra/extra-options.nix
+                ./modules/nixos/workstation
+                ./profiles/astra/workstation.nix
                 ./nixos/pandorabox/configuration.nix
               ];
             })
@@ -41,9 +40,8 @@
               imports = [
                 ./overlays/workstation.nix
                 ./modules/options
-                ./modules/nixos
-                ./profiles/astra/options.nix
-                ./profiles/astra/extra-options.nix
+                ./modules/nixos/workstation
+                ./profiles/astra/workstation.nix
                 ./nixos/pandorabox-v2/configuration.nix
               ];
             })
@@ -56,10 +54,8 @@
             ({ ... }: {
               imports = [
                 ./modules/options
-                ./modules/nixos
-                ./modules/nixos/wsl.nix
-                ./profiles/astra/options.nix
-                ./profiles/astra/extra-wsl-options.nix
+                ./modules/nixos/wsl
+                ./profiles/astra/wsl.nix
                 ./nixos/pandorabox-wsl/configuration.nix
               ];
             })
@@ -72,8 +68,7 @@
               imports = [
                 (modulesPath + "/virtualisation/proxmox-lxc.nix")
                 ./modules/options
-                ./modules/nixos
-                ./modules/nixos/lxc.nix
+                ./modules/nixos/lxc
                 ./profiles/infra/options.nix
                 ./nixos/pgsql17/configuration.nix
               ];
@@ -91,9 +86,8 @@
                 zen-browser.homeModules.beta
                 ./overlays/workstation.nix
                 ./modules/options
-                ./modules/home-manager
-                ./profiles/astra/options.nix
-                ./profiles/astra/extra-options.nix
+                ./modules/home-manager/workstation
+                ./profiles/astra/workstation.nix
                 ./home-manager/astra/home.nix
               ];
             })
@@ -104,12 +98,9 @@
           modules = [
             ({ ... }: {
               imports = [
-                noctalia.homeModules.default
-                zen-browser.homeModules.beta
                 ./modules/options
-                ./modules/home-manager
-                ./profiles/astra/options.nix
-                ./profiles/astra/extra-wsl-options.nix
+                ./modules/home-manager/wsl
+                ./profiles/astra/wsl.nix
                 ./home-manager/astra/home.nix
               ];
             })

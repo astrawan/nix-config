@@ -4,6 +4,9 @@ let
   cfg = config.devlive.lxc;
 in
 {
+  imports = [
+    ../common/users.nix
+  ];
   config = lib.mkIf cfg.enable {
     nix.settings.sandbox = false;
 

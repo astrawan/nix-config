@@ -4,6 +4,10 @@ let
   desktop = config.devlive.features.desktop;
 in
 {
+  imports = [
+    ./common.nix
+  ];
+
   devlive.features.desktop = {
     type = "noctalia";
     extraHomePackages = with pkgs; [

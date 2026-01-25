@@ -1,13 +1,18 @@
+{ config, ... }:
+
 {
   imports = [
+    ../common/users.nix
     ./features
-    ./infra
     ./programs
     ./security
     ./services
     ./virtualisation
     ./boot.nix
     ./networking.nix
-    ./users.nix
   ];
+
+  config = {
+    devlive.host.type = "workstation";
+  };
 }
