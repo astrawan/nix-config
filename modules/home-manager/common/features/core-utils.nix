@@ -16,6 +16,6 @@ in
     programs.jq.enable = true;
     programs.starship.enable = true;
 
-    devlive.programs.tmux.enable = true;
+    devlive.programs.zellij.enable = true;
   };
 }

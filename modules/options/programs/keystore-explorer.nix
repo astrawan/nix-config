@@ -5,6 +5,6 @@ let
 in
 {
   options.devlive.programs.keystore-explorer = {
-    enable = lib.mkEnableOption "tmux";
+    enable = lib.mkEnableOption "keystore-explorer";
   };
 }
