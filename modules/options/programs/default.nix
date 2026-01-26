@@ -11,6 +11,7 @@
     ./librewolf.nix
     ./tmux.nix
     ./vaults.nix
+    ./zellij.nix
     ./zen-browser.nix
   ];
 }
