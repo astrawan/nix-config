@@ -11,7 +11,6 @@ in
   devlive.features.desktop = {
     type = "noctalia";
     extraHomePackages = with pkgs; [
-        aegisub
         freerdp
         gimp
         gradia
@@ -47,6 +46,7 @@ in
   devlive.features.devel-android.enable = true;
   devlive.features.yubikey.enable = true;
 
+  devlive.programs.aegisub.enable = true;
   devlive.programs.brave.enable = true;
   devlive.programs.deja-dup = {
     enable = true;
