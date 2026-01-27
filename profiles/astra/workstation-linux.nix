@@ -16,7 +16,6 @@ in
         gradia
         inkscape
         libreoffice
-        nerd-fonts.fira-code
         popcorntime
         telegram-desktop
         wireshark
