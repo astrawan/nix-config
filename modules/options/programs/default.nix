@@ -5,11 +5,13 @@
     ./brave.nix
     ./deja-dup.nix
     ./folio.nix
+    ./fragments.nix
     ./ghostty.nix
     ./gnupg.nix
     ./keystore-explorer.nix
     ./lazygit.nix
     ./librewolf.nix
+    ./qbittorrent.nix
     ./tmux.nix
     ./vaults.nix
     ./zellij.nix

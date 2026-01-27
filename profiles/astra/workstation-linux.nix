@@ -31,16 +31,6 @@ in
     ]);
     noctalia = lib.mkIf (desktop.type == "noctalia") {
       compositor = "hyprland";
-      extraHomePackages = (
-        if desktop.noctalia.compositor == "hyprland"
-        then
-          (with pkgs; [
-            qbittorrent
-          ])
-        else (with pkgs; [
-            fragments
-          ])
-      );
     };
   };
   devlive.features.devel-android.enable = true;
@@ -57,6 +47,8 @@ in
     periodic = true;
   };
   devlive.programs.keystore-explorer.enable = true;
+  devlive.programs.qbittorrent.enable = lib.mkIf (desktop.noctalia.compositor == "hyprland") true;
+  devlive.programs.fragments.enable = lib.mkIf (desktop.noctalia.compositor == "niri") true;
   devlive.programs.vaults = {
     enable = true;
     settings = {
