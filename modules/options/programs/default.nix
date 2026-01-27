@@ -1,5 +1,6 @@
 {
   imports = [
+    ./aegisub.nix
     ./bash.nix
     ./brave.nix
     ./deja-dup.nix

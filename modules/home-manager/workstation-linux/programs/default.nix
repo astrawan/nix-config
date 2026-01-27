@@ -1,6 +1,7 @@
 {
   imports = [
     ../../common/programs
+    ./aegisub.nix
     ./brave.nix
     ./deja-dup.nix
     ./folio.nix
