@@ -11,12 +11,6 @@ in
       NIXOS_OZONE_WL = "1";
       QT_QPA_PLATFORMTHEME="qt6ct";
     };
-    fonts = {
-      fontDir.enable = true;
-      packages = with pkgs; [
-        nerd-fonts.fira-code
-      ];
-    };
     programs.evolution.enable = true;
     programs.hyprland = lib.mkIf (desktop.noctalia.compositor == "hyprland") {
       enable = true;
