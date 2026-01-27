@@ -171,11 +171,11 @@ in
           gtk = true;
           qt = true;
           kcolorscheme = true;
-          alacritty = false;
-          kitty = false;
-          ghostty = true;
-          foot = false;
-          wezterm = false;
+          alacritty = config.programs.alacritty.enable;
+          kitty = config.programs.kitty.enable;
+          ghostty = config.programs.ghostty.enable;
+          foot = config.programs.foot.enable;
+          wezterm = config.programs.wezterm.enable;
           fuzzel = false;
           discord = false;
           pywalfox = false;
@@ -185,13 +185,13 @@ in
           spicetify = false;
           telegram = true;
           cava = false;
-          yazi = true;
+          yazi = config.programs.yazi.enable;
           emacs = false;
           niri = if (desktop.noctalia.compositor == "niri") then true else false;
           hyprland = if (desktop.noctalia.compositor == "hyprland") then true else false;
           mango = false;
           zed = false;
-          zenBrowser = true;
+          zenBrowser = config.devlive.programs.zen-browser.enable;
           helix = false;
           enableUserTemplates = false;
         };
@@ -425,6 +425,9 @@ in
       options = {
         selection-clipboard = "clipboard";
       };
+      extraConfig = ''
+        include noctaliarc
+      '';
     };
     # Enable zen browser transparency and custom layout
     programs.zen-browser.profiles.default.settings = lib.mkIf config.devlive.programs.zen-browser.enable {
