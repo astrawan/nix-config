@@ -10,7 +10,13 @@ in
     ]
     ++ (
       if config.devlive.features.desktop.type == "gnome" then
-        with pkgs; [cartero dbeaver-bin gaphor]
+        with pkgs; [cartero gaphor]
+      else
+        []
+    )
+    ++ (
+      if config.devlive.features.desktop.type != null then
+        with pkgs; [dbeaver-bin]
       else
         []
     );
