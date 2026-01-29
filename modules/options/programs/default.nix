@@ -4,6 +4,7 @@
     ./bash.nix
     ./brave.nix
     ./deja-dup.nix
+    ./fish.nix
     ./folio.nix
     ./fragments.nix
     ./ghostty.nix

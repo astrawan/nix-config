@@ -14,5 +14,6 @@
 
   config = {
     devlive.host.type = "workstation";
+    users.users."${config.devlive.user.name}".shell = config.devlive.host.defaultShell;
   };
 }

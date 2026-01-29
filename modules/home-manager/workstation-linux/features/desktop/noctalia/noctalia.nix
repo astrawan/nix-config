@@ -53,6 +53,8 @@ in
     programs.eza = {
       colors = "always";
       enable = true;
+      enableBashIntegration = lib.mkIf (config.devlive.programs.bash.enable) true;
+      enableFishIntegration = lib.mkIf (config.devlive.programs.fish.enable) true;
       icons = "always";
     };
     # Image preview

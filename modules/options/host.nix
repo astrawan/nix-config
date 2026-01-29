@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 
 {
   options.devlive.host = {
@@ -7,6 +7,10 @@
     };
     defaultLocale = lib.mkOption {
       type = lib.types.str;
+    };
+    defaultShell = lib.mkOption {
+      type = lib.types.package;
+      default = pkgs.bash;
     };
     type = lib.mkOption {
       type = lib.types.enum [
