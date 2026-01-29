@@ -1,12 +1,15 @@
 { config, lib, ... }:
 
-let 
-  cfg = config.devlive.programs.bash;
+let
+  cfg = config.devlive.programs.fish;
 in
 {
   config = lib.mkIf cfg.enable {
-    programs.bash = {
+    programs.fish = {
       enable = true;
+      interactiveShellInit = ''
+        set fish_greeting
+      '';
     };
     home.shell.enableFishIntegration = true;
   };
