@@ -605,5 +605,8 @@ in
       "image/x-xbitmap" = "imv.desktop";
       "image/heic" = "imv.desktop";
     };
+
+    home.file."${config.home.homeDirectory}/Pictures/Wallpapers/wallhaven_1pqq1w.jpg".source = ../../../../../../assets/wallpapers/wallhaven_1pqq1w.jpg;
+    home.file."${config.home.homeDirectory}/Pictures/Wallpapers/wallhaven_9doozw.jpg".source = ../../../../../../assets/wallpapers/wallhaven_9doozw.jpg;
   };
 }
