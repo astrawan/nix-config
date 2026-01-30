@@ -15,6 +15,7 @@
     ./qbittorrent.nix
     ./tmux.nix
     ./vaults.nix
+    ./wezterm.nix
     ./zellij.nix
     ./zen-browser.nix
   ];

@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   options.devlive.features.desktop = {
@@ -10,6 +10,10 @@
       default = null;
       description = "Default desktop to use";
       example = "gnome";
+    };
+    defaultTerminalEmulator = lib.mkOption {
+      type = lib.types.package;
+      default = pkgs.ghostty;
     };
     defaultWebBrowser = lib.mkOption {
       type = lib.types.enum [
