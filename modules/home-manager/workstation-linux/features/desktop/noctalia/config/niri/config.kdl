@@ -190,5 +190,7 @@ include "./output.kdl"
 
 include "./binds.kdl"
 
+include "./workspace.kdl"
+
 include "./noctalia.kdl"
 

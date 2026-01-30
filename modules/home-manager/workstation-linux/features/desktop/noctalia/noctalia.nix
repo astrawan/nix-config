@@ -496,6 +496,9 @@ in
     xdg.configFile."niri/output.kdl" = lib.mkIf (desktop.noctalia.compositor == "niri") {
       source = ./config/niri/output.kdl;
     };
+    xdg.configFile."niri/workspace.kdl" = lib.mkIf (desktop.noctalia.compositor == "niri") {
+      source = ./config/niri/workspace.kdl;
+    };
 
     services.flameshot = lib.mkIf (desktop.noctalia.compositor == "hyprland") {
       enable = true;
