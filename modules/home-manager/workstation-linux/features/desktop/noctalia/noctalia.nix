@@ -42,11 +42,9 @@ in
         general = ''"DejaVu Sans,11,-1,5,50,0,0,0,0,0,Regular"'';
       };
     };
-    devlive.programs.ghostty.enable = true;
-    programs.ghostty.settings = {
-      # niri doesn't support window blur
-      background-opacity = if (desktop.noctalia.compositor == "hyprland") then 0.8 else 1.0;
-      theme = "noctalia";
+    devlive.programs.wezterm = {
+      enable = true;
+      defaultTerminalEmulator = true;
     };
     # System monitor
     programs.bottom.enable = true;
@@ -68,7 +66,7 @@ in
       settings = {
         appLauncher = {
           position = "follow_bar";
-          terminalCommand = "ghostty -e";
+          terminalCommand = "devlive-desktop-terminal -e";
           viewMode = "grid";
         };
         bar = {
@@ -452,7 +450,9 @@ in
           "${config.xdg.configHome}/hypr/permissions.conf"
           "${config.xdg.configHome}/hypr/rules.conf"
           "${config.xdg.configHome}/hypr/noctalia/noctalia-colors.conf"
-        ];
+        ]
+        ++(if config.programs.ghostty.enable then [ "${config.xdg.configHome}/hypr/rules-ghostty.conf" ] else [])
+        ++(if config.programs.wezterm.enable then [ "${config.xdg.configHome}/hypr/rules-wezterm.conf" ] else []);
       };
     };
 
@@ -479,6 +479,12 @@ in
     };
     xdg.configFile."hypr/rules.conf" = lib.mkIf (desktop.noctalia.compositor == "hyprland") {
       source = ./config/hypr/rules.conf;
+    };
+    xdg.configFile."hypr/rules-ghostty.conf" = lib.mkIf (desktop.noctalia.compositor == "hyprland" && config.programs.ghostty.enable) {
+      source = ./config/hypr/rules-ghostty.conf;
+    };
+    xdg.configFile."hypr/rules-wezterm.conf" = lib.mkIf (desktop.noctalia.compositor == "hyprland" && config.programs.wezterm.enable) {
+      source = ./config/hypr/rules-wezterm.conf;
     };
 
     xdg.configFile."niri/config.kdl" = lib.mkIf (desktop.noctalia.compositor == "niri") {
@@ -543,7 +549,7 @@ in
       enable = true;
       settings = {
         program_options = {
-          file_manager = "ghostty -e yazi";
+          file_manager = "devlive-desktop-terminal -e yazi";
         };
       };
       tray = "always";
