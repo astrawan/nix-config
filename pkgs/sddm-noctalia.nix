@@ -14,13 +14,13 @@ let
 in
   stdenvNoCC.mkDerivation rec {
     pname = "sddm-noctalia";
-    version = "unstable-2025-12-13";
+    version = "unstable-2026-01-23";
 
     src = fetchFromGitHub {
       owner = "ClementFombonne";
       repo = "sddm-noctalia-theme";
-      rev = "8f768bb930e4b86fc45ea006835e2f9a11e9a7c2";
-      hash = "sha256-0oFEVoPMIpIqNKi/9WUskp13g6DU4AqJirpfGEC+dWs=";
+      rev = "92bf8e6ff35be19b50b60a38e0f3d6e38e1c66e1";
+      hash = "sha256-crN2oqml/QJTjOCa3/i0MQREDvPzg5TYC5BfKnk77fQ=";
     };
 
     propagatedBuildInputs = with pkgs.kdePackages; [
@@ -35,6 +35,11 @@ in
     installPhase = ''
       mkdir -p $out/share/sddm/themes/noctalia
       cp -r * $out/share/sddm/themes/noctalia
+
+      rm -fr $out/share/sddm/themes/noctalia/flake.*
+      rm -fr $out/share/sddm/themes/noctalia/*.sh
+      rm -fr $out/share/sddm/themes/noctalia/*.md
+      rm -fr $out/share/sddm/themes/noctalia/nix
 
       # --- HANDLE CUSTOM BACKGROUND ---
       # Only run this block if the user provided a background path
