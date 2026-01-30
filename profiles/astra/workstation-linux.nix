@@ -29,7 +29,7 @@ in
         lock
     ]);
     noctalia = lib.mkIf (desktop.type == "noctalia") {
-      compositor = "hyprland";
+      compositor = "niri";
     };
   };
   devlive.features.devel-android.enable = true;
