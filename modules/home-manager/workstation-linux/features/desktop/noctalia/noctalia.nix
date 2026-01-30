@@ -125,7 +125,11 @@ in
               }
               {
                 id = "ControlCenter";
-                customIconPath = "${pkgs.nixos-icons}/share/icons/hicolor/24x24/apps/nix-snowflake-white.png";
+                colorizeDistroLogo = false;
+                colorizeSystemIcon = "none";
+                enableColorization = false;
+                icon = "noctalia";
+                useDistroLogo = true;
               }
             ];
           };
