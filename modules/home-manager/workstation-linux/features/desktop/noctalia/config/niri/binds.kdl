@@ -5,8 +5,8 @@ binds {
     Super+C                                                                                          { close-window;                                            }
     Mod+Shift+C                    hotkey-overlay-title="Show Control Center"                        { spawn-sh "noctalia-shell ipc call controlCenter toggle"; }
     Mod+Shift+D                    hotkey-overlay-title="Show Calendar"                              { spawn-sh "noctalia-shell ipc call calendar toggle";      }
-    Mod+E                                                                                            { spawn    "ghostty" "-e" "yazi";                          }
-    Mod+Q                                                                                            { spawn    "ghostty";                                      }
+    Mod+E                                                                                            { spawn    "devlive-desktop-terminal" "-e" "yazi";                          }
+    Mod+Q                                                                                            { spawn    "devlive-desktop-terminal";                                      }
     Mod+R                          hotkey-overlay-title="Open Launcher"                              { spawn-sh "noctalia-shell ipc call launcher toggle";      }
     Mod+Shift+S                    hotkey-overlay-title="Show Settings"                              { spawn-sh "noctalia-shell ipc call settings toggle";      }
 
