@@ -33,10 +33,8 @@ in
     };
   };
   devlive.features.devel-android.enable = true;
-  devlive.features.yubikey.enable = true;
 
   devlive.programs.aegisub.enable = true;
-  devlive.programs.brave.enable = true;
   devlive.programs.deja-dup = {
     enable = true;
     include-list = ["/home/${config.devlive.user.name}/Documents/Synchronizable"];
@@ -54,7 +52,6 @@ in
       encrypted_data_directory = "/home/${config.devlive.user.name}/Documents/Synchronizable/Vaults";
     };
   };
-  devlive.programs.zen-browser.enable = true;
 
   devlive.security.auditd.enable = true;
 

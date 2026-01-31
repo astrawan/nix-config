@@ -1,5 +1,21 @@
+{ config, lib, ... }:
+
 {
   imports = [
     ../common/programs
   ];
+
+  config = {
+    programs.mpv.enable = true;
+
+    devlive.programs.eza.enable = true;
+    devlive.programs.wezterm = lib.mkIf (config.devlive.programs.wezterm.enable) {
+      settings = {
+        macos_window_background_blur = 60;
+        window_background_opacity = 0.7;
+      };
+    };
+    devlive.programs.yazi.enable = true;
+    devlive.programs.zathura.enable = true;
+  };
 }

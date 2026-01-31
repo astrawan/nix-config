@@ -13,12 +13,6 @@ in
         with pkgs; [cartero gaphor]
       else
         []
-    )
-    ++ (
-      if config.devlive.features.desktop.type != null then
-        with pkgs; [dbeaver-bin]
-      else
-        []
     );
   };
 }

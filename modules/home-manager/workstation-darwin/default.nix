@@ -1,7 +1,7 @@
 {
   imports = [
-    ./features.nix
+    ./features
+    ./packages.nix
     ./programs.nix
-    ./core-utils.nix
   ];
 }

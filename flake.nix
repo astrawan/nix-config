@@ -89,9 +89,11 @@
                 ./profiles/astra/workstation-darwin.nix
                 ./darwin/Astrawans-MacBook-Pro/configuration.nix
               ];
+
               nixpkgs.hostPlatform = darwinSystem;
               system.primaryUser = "astra";
-              homebrew.enable = true;
+
+              devlive.host.system = "darwin";
             })
           ];
         };
@@ -136,6 +138,8 @@
                 ./profiles/astra/workstation-darwin.nix
                 ./home-manager/astra/home.nix
               ];
+
+              devlive.host.system = "darwin";
             })
           ];
         };

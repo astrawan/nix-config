@@ -5,10 +5,6 @@ let
 in
 {
   config = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [
-      brave
-    ];
-
     xdg.mimeApps.defaultApplications = lib.mkIf (config.devlive.features.desktop.defaultWebBrowser == "brave") {
       "text/html" = "brave-browser.desktop";
       "x-scheme-handler/http" = "brave-browser.desktop";
