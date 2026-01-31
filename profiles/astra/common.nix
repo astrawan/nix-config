@@ -19,11 +19,8 @@
 
   devlive.features.core-utils.enable = true;
   devlive.features.devel-utils.enable = true;
-  devlive.features.yubikey.enable = true;
 
   devlive.programs.bash.enable = true;
-  devlive.programs.brave.enable = true;
   devlive.programs.fish.enable = true;
   devlive.programs.gnupg.enable = true;
-  devlive.programs.zen-browser.enable = true;
 }
