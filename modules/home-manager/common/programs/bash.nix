@@ -8,6 +8,6 @@ in
     programs.bash = {
       enable = true;
     };
-    home.shell.enableFishIntegration = true;
+    home.shell.enableBashIntegration = true;
   };
 }

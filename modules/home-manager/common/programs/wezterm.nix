@@ -2,6 +2,9 @@
 
 let
   cfg = config.devlive.programs.wezterm;
+
+  window_background_opacity = builtins.toString cfg.settings.window_background_opacity;
+  macos_window_background_blur = builtins.toString cfg.settings.macos_window_background_blur;
 in
 {
   config = lib.mkIf cfg.enable {
@@ -11,6 +14,8 @@ in
 
       config.font = wezterm.font("FiraCode Nerd Font Mono", {weight="Medium", stretch="Normal", style="Normal"})
       config.enable_tab_bar = false
+      config.window_background_opacity = ${window_background_opacity}
+      config.macos_window_background_blur = ${macos_window_background_blur}
 
       ${cfg.extraConfig}
 

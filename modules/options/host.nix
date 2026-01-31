@@ -12,6 +12,12 @@
       type = lib.types.package;
       default = pkgs.bash;
     };
+    system = lib.mkOption {
+      type = lib.types.enum [
+        "darwin"
+        "linux"
+      ];
+    };
     type = lib.mkOption {
       type = lib.types.enum [
         "lxc"
