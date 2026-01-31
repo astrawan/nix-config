@@ -3,6 +3,7 @@
 {
   imports = [
     ./common.nix
+    ./workstation-common.nix
   ];
 
   devlive.programs.wezterm = {

@@ -6,6 +6,7 @@ in
 {
   imports = [
     ./common.nix
+    ./workstation-common.nix
   ];
 
   devlive.features.desktop = {
