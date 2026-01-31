@@ -4,6 +4,7 @@
     ./bash.nix
     ./brave.nix
     ./deja-dup.nix
+    ./eza.nix
     ./fish.nix
     ./folio.nix
     ./fragments.nix
@@ -16,6 +17,8 @@
     ./tmux.nix
     ./vaults.nix
     ./wezterm.nix
+    ./yazi.nix
+    ./zathura.nix
     ./zellij.nix
     ./zen-browser.nix
   ];
