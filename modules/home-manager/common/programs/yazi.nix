@@ -226,12 +226,6 @@ in
         };
         mgr.ratio = [3 5 0];
       };
-      theme = {
-        flavor = lib.mkIf (config.devlive.features.desktop.type == "noctalia") {
-          dark = "noctalia";
-          light = "noctalia";
-        };
-      };
     };
   };
 }
