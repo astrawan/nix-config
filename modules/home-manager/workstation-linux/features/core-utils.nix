@@ -10,6 +10,11 @@ in
       pciutils
     ];
 
-    programs.starship.enable = true;
+    programs.starship = {
+      enable = true;
+      settings = {
+        scan_timeout = 2000;
+      };
+    };
   };
 }
