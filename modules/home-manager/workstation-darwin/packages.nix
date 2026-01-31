@@ -2,6 +2,7 @@
 
 {
   home.packages = with pkgs; [
+    stats
     telegram-desktop
   ];
 }
