@@ -9,6 +9,8 @@ in
       enable = true;
       interactiveShellInit = ''
         set fish_greeting
+
+        ${cfg.interactiveShellInit}
       '';
     };
     home.shell.enableFishIntegration = true;
