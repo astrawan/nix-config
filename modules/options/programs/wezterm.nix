@@ -4,6 +4,10 @@ let
   cfg = config.devlive.programs.wezterm;
   settings = {
     options = {
+      color_scheme = lib.mkOption {
+        type = lib.types.str;
+        default = "Default (dark) (terminal.sexy)";
+      };
       macos_window_background_blur = lib.mkOption {
         type = lib.types.int;
         default = 0;
