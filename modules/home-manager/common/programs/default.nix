@@ -10,5 +10,6 @@
     ./yazi.nix
     ./zathura.nix
     ./zellij.nix
+    ./zen-browser.nix
   ];
 }
