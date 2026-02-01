@@ -60,7 +60,6 @@ in
   devlive.services.opensnitch.enable = true;
   devlive.services.openssh.enable = false;
   devlive.services.pipewire.enable = true;
-  devlive.services.tailscale.enable = true;
   devlive.services.usbguard.enable = true;
 
   devlive.virtualisation.libvirtd.enable = true;

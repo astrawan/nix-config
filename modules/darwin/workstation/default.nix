@@ -5,6 +5,7 @@
     ./features
     ./homebrew.nix
     ./programs
+    ./services
     ./users.nix
   ];
 
