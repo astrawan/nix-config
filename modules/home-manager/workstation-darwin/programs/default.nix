@@ -3,6 +3,7 @@
     ../../common/programs
     ./fish.nix
     ./wezterm.nix
+    ./yazi.nix
   ];
 
   config = {

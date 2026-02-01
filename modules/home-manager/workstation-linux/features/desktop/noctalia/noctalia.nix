@@ -46,6 +46,7 @@ in
     devlive.programs.wezterm = {
       enable = true;
       defaultTerminalEmulator = true;
+      settings.color_scheme = "Noctalia";
     };
     # File manager
     devlive.programs.yazi = {
