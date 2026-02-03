@@ -56,6 +56,7 @@ in
   };
 
   devlive.security.auditd.enable = true;
+  devlive.security.sudo-rs.enable = true;
 
   devlive.services.flatpak.enable = true;
   devlive.services.opensnitch.enable = true;
