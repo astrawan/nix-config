@@ -2,6 +2,8 @@
 
 let
   desktop = config.devlive.features.desktop;
+  wallpaperDayFilename = builtins.baseNameOf desktop.noctalia.wallpaperRolling.day.image;
+  wallpaperNightFilename = builtins.baseNameOf desktop.noctalia.wallpaperRolling.night.image;
 in
 {
   config = lib.mkIf (desktop.type == "noctalia") {
@@ -386,7 +388,49 @@ in
       "image/heic" = "imv.desktop";
     };
 
-    home.file."${config.home.homeDirectory}/Pictures/Wallpapers/wallhaven_1pqq1w.jpg".source = ../../../../../../assets/wallpapers/wallhaven_1pqq1w.jpg;
-    home.file."${config.home.homeDirectory}/Pictures/Wallpapers/wallhaven_9doozw.jpg".source = ../../../../../../assets/wallpapers/wallhaven_9doozw.jpg;
+    home.file."${config.home.homeDirectory}/Pictures/Wallpapers/${wallpaperDayFilename}" = lib.mkIf(desktop.noctalia.wallpaperRolling.enable) {
+      source = desktop.noctalia.wallpaperRolling.day.image;
+    };
+    home.file."${config.home.homeDirectory}/Pictures/Wallpapers/${wallpaperNightFilename}" = lib.mkIf(desktop.noctalia.wallpaperRolling.enable) {
+      source = desktop.noctalia.wallpaperRolling.night.image;
+    };
+
+    systemd.user.services."devlive-wallpaper@" = lib.mkIf (desktop.noctalia.wallpaperRolling.enable) {
+      Service = {
+        ExecStart = "${config.home.profileDirectory}/bin/noctalia-shell ipc call wallpaper set ${config.home.homeDirectory}/Pictures/Wallpapers/%i ''";
+        Restart = "on-failure";
+        RestartSec = 10;
+      };
+      Unit = {
+        Requires = [ "noctalia-shell.service" ];
+      };
+    };
+
+    systemd.user.timers = lib.mkIf(desktop.noctalia.wallpaperRolling.enable) {
+      "devlive-wallpaper-night" = {
+        Install = {
+          WantedBy = [
+            "timers.target"
+          ];
+        };
+        Timer = {
+          OnCalendar = "*-*-* ${desktop.noctalia.wallpaperRolling.night.time}";
+          Persistent = true;
+          Unit = "devlive-wallpaper@${wallpaperNightFilename}.service";
+        };
+      };
+      "devlive-wallpaper-day" = {
+        Install = {
+          WantedBy = [
+            "timers.target"
+          ];
+        };
+        Timer = {
+          OnCalendar = "*-*-* ${desktop.noctalia.wallpaperRolling.day.time}";
+          Persistent = true;
+          Unit = "devlive-wallpaper@${wallpaperDayFilename}.service";
+        };
+      };
+    };
   };
 }

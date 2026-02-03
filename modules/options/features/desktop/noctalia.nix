@@ -39,5 +39,28 @@
         Extra packages to make avaiable to noctalia via home-manager
       '';
     };
+    wallpaperRolling = {
+      enable = lib.mkEnableOption "wallpaper-rolling";
+      day = {
+        time = lib.mkOption {
+          type = lib.types.str;
+          default = "06:00:00";
+        };
+        image = lib.mkOption {
+          type = lib.types.path;
+          default = ../../../../assets/wallpapers/wallhaven_1pqq1w.jpg;
+        };
+      };
+      night = {
+        time = lib.mkOption {
+          type = lib.types.str;
+          default = "18:00:00";
+        };
+        image = lib.mkOption {
+          type = lib.types.path;
+          default = ../../../../assets/wallpapers/wallhaven_9doozw.jpg;
+        };
+      };
+    };
   };
 }
