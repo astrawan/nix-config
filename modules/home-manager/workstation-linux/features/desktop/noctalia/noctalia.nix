@@ -273,14 +273,29 @@ in
       source = ./config/hypr/rules-wezterm.conf;
     };
 
+    xdg.configFile."niri/animations.kdl" = lib.mkIf (desktop.noctalia.compositor == "niri") {
+      source = ./config/niri/animations.kdl;
+    };
     xdg.configFile."niri/config.kdl" = lib.mkIf (desktop.noctalia.compositor == "niri") {
       source = ./config/niri/config.kdl;
     };
     xdg.configFile."niri/binds.kdl" = lib.mkIf (desktop.noctalia.compositor == "niri") {
       source = ./config/niri/binds.kdl;
     };
+    xdg.configFile."niri/input.kdl" = lib.mkIf (desktop.noctalia.compositor == "niri") {
+      source = ./config/niri/input.kdl;
+    };
     xdg.configFile."niri/output.kdl" = lib.mkIf (desktop.noctalia.compositor == "niri") {
       source = ./config/niri/output.kdl;
+    };
+    xdg.configFile."niri/layer-rule.kdl" = lib.mkIf (desktop.noctalia.compositor == "niri") {
+      source = ./config/niri/layer-rule.kdl;
+    };
+    xdg.configFile."niri/layout.kdl" = lib.mkIf (desktop.noctalia.compositor == "niri") {
+      source = ./config/niri/layout.kdl;
+    };
+    xdg.configFile."niri/window-rule.kdl" = lib.mkIf (desktop.noctalia.compositor == "niri") {
+      source = ./config/niri/window-rule.kdl;
     };
     xdg.configFile."niri/workspace.kdl" = lib.mkIf (desktop.noctalia.compositor == "niri") {
       source = ./config/niri/workspace.kdl;
