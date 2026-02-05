@@ -135,6 +135,12 @@ in
       } // cfg.plugins;
       settings = {
         opener = {
+          default = [
+            {
+              run = ''xdg-open "$@"'';
+              orphan = true;
+            }
+          ];
           imv = lib.mkIf(config.programs.imv.enable) ([
             {
               run = ''imv "$@"'';
@@ -222,7 +228,15 @@ in
                 use = "mpv";
               }
             ]
-          else []);
+          else [])
+          ++(
+            [
+              {
+                mime = "*";
+                use = "default";
+              }
+            ]
+          );
         };
         mgr.ratio = [3 5 0];
       };
