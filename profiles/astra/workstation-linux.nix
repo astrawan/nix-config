@@ -35,6 +35,7 @@ in
     };
   };
   devlive.features.devel-android.enable = true;
+  devlive.features.uutils.enable = true;
 
   devlive.programs.aegisub.enable = true;
   devlive.programs.deja-dup = {
