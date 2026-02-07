@@ -202,6 +202,7 @@ in
           niri = if (desktop.noctalia.compositor == "niri") then true else false;
           hyprland = if (desktop.noctalia.compositor == "hyprland") then true else false;
           mango = false;
+          zathura = config.programs.zathura.enable;
           zed = false;
           zenBrowser = config.devlive.programs.zen-browser.enable;
           helix = false;
