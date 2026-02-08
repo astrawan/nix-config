@@ -11,6 +11,7 @@
     ./librewolf.nix
     ./qbittorrent.nix
     ./vaults.nix
+    ./wezterm.nix
     ./zen-browser.nix
   ];
 }
