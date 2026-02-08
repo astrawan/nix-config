@@ -16,6 +16,9 @@ in
       config.font = wezterm.font("FiraCode Nerd Font Mono", {weight="Medium", stretch="Normal", style="Normal"})
       config.color_scheme = '${color_scheme}'
       config.enable_tab_bar = false
+      config.keys = {
+        { key = '/', mods = 'ALT', action = wezterm.action.ShowTabNavigator },
+      }
       config.window_background_opacity = ${window_background_opacity}
       config.macos_window_background_blur = ${macos_window_background_blur}
 
