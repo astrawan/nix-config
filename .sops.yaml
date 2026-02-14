@@ -1,0 +1,8 @@
+keys:
+  - &astra E69DFA903C39AA28F990464EA6113EB4F50442EA
+
+creation_rules:
+    - path_regex: \.astra\.yaml$
+      key_groups:
+      - pgp:
+        - *astra

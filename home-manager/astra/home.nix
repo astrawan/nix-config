@@ -89,7 +89,7 @@
         identityFile = [
           # fallback to use regular SSH key, SSH with hardware security key is
           # not supported by the bitbucket server
-          "~/Vaults/SSH/id_ed25519_bitbucket_ts"
+          "${config.sops.secrets.ssh_key_git_abb.path}"
         ];
       };
       "firewall.node.devlive.cloud" = {
@@ -97,8 +97,8 @@
         port = 2222;
         user = "puffy";
         identityFile = [
-          "~/Vaults/SSH/id_ed25519_sk_srv_1"
-          "~/Vaults/SSH/id_ed25519_sk_srv_2"
+          "${config.sops.secrets.ssh_key_srv_yk1.path}"
+          "${config.sops.secrets.ssh_key_srv_yk2.path}"
         ];
       };
       "gitlab.com" = {
@@ -106,8 +106,8 @@
         port = 22;
         user = "astrawan";
         identityFile = [
-          "~/Vaults/SSH/id_ed25519_sk_git_1"
-          "~/Vaults/SSH/id_ed25519_sk_git_2"
+          "${config.sops.secrets.ssh_key_git_yk1.path}"
+          "${config.sops.secrets.ssh_key_git_yk2.path}"
         ];
       };
       "github.com" = {
@@ -115,8 +115,8 @@
         port = 22;
         user = "git";
         identityFile = [
-          "~/Vaults/SSH/id_ed25519_sk_git_1"
-          "~/Vaults/SSH/id_ed25519_sk_git_2"
+          "${config.sops.secrets.ssh_key_git_yk1.path}"
+          "${config.sops.secrets.ssh_key_git_yk2.path}"
         ];
       };
       "ubuntu.controlplane.node.devlive.cloud" = {
@@ -124,8 +124,8 @@
         port = 22;
         user = "ubuntu";
         identityFile = [
-          "~/Vaults/SSH/id_ed25519_sk_srv_1"
-          "~/Vaults/SSH/id_ed25519_sk_srv_2"
+          "${config.sops.secrets.ssh_key_srv_yk1.path}"
+          "${config.sops.secrets.ssh_key_srv_yk2.path}"
         ];
       };
       "vpnadmin.controlplane.node.devlive.cloud" = {
@@ -133,8 +133,8 @@
         port = 22;
         user = "vpnadmin";
         identityFile = [
-          "~/Vaults/SSH/id_ed25519_sk_srv_1"
-          "~/Vaults/SSH/id_ed25519_sk_srv_2"
+          "${config.sops.secrets.ssh_key_srv_yk1.path}"
+          "${config.sops.secrets.ssh_key_srv_yk2.path}"
         ];
       };
       "localhost.1" = {
@@ -178,6 +178,28 @@
         extraOptions = {
           HostKeyAlgorithms = "+ssh-rsa";
         };
+      };
+    };
+  };
+
+  sops = {
+    defaultSopsFile = ../../secrets/secrets.astra.yaml;
+    gnupg.home = "${config.home.homeDirectory}/.gnupg";
+    secrets = {
+      ssh_key_git_yk1 = {
+        path = "${config.home.homeDirectory}/.ssh/git_yk1";
+      };
+      ssh_key_git_yk2 = {
+        path = "${config.home.homeDirectory}/.ssh/git_yk2";
+      };
+      ssh_key_srv_yk1 = {
+        path = "${config.home.homeDirectory}/.ssh/srv_yk1";
+      };
+      ssh_key_srv_yk2 = {
+        path = "${config.home.homeDirectory}/.ssh/srv_yk2";
+      };
+      ssh_key_git_abb = {
+        path = "${config.home.homeDirectory}/.ssh/git_abb";
       };
     };
   };

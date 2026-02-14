@@ -38,23 +38,9 @@ in
   devlive.features.uutils.enable = true;
 
   devlive.programs.aegisub.enable = true;
-  devlive.programs.deja-dup = {
-    enable = true;
-    include-list = ["/home/${config.devlive.user.name}/Documents/Synchronizable"];
-    google = {
-      enable = true;
-    };
-    periodic = true;
-  };
   devlive.programs.keystore-explorer.enable = true;
   devlive.programs.qbittorrent.enable = lib.mkIf (desktop.noctalia.compositor == "hyprland") true;
   devlive.programs.fragments.enable = lib.mkIf (desktop.noctalia.compositor == "niri") true;
-  devlive.programs.vaults = {
-    enable = true;
-    settings = {
-      encrypted_data_directory = "/home/${config.devlive.user.name}/Documents/Synchronizable/Vaults";
-    };
-  };
 
   devlive.security.auditd.enable = true;
   devlive.security.sudo-rs.enable = true;
