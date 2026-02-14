@@ -101,6 +101,7 @@ in
               }
               {
                 id = "Workspace";
+                followFocusedScreen = true;
                 hideUnoccupied = false;
               }
             ];
