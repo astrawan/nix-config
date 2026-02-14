@@ -60,7 +60,8 @@ in
   devlive.security.sudo-rs.enable = true;
 
   devlive.services.flatpak.enable = true;
-  devlive.services.opensnitch.enable = true;
+  # NOTE: disable due build error on bpf kernel module (kernel version 6.19)
+  devlive.services.opensnitch.enable = false;
   devlive.services.openssh.enable = false;
   devlive.services.pipewire.enable = true;
   devlive.services.usbguard.enable = true;
