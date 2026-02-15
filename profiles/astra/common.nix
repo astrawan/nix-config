@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   devlive.host = {
@@ -23,4 +23,17 @@
   devlive.programs.bash.enable = true;
   devlive.programs.fish.enable = true;
   devlive.programs.gnupg.enable = true;
+  devlive.programs.jellyfin-tui = {
+    enable = true;
+    settings = {
+      servers = [
+        {
+          name = "Home Server";
+          url = "https://jellyfin.stack.devlive.cloud";
+          username = "${config.devlive.user.name}";
+          password_file = "${config.xdg.configHome}/sops-nix/secrets/password_jellyfin";
+        }
+      ];
+    };
+  };
 }

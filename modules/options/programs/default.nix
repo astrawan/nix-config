@@ -10,6 +10,7 @@
     ./fragments.nix
     ./ghostty.nix
     ./gnupg.nix
+    ./jellyfin-tui.nix
     ./keystore-explorer.nix
     ./lazygit.nix
     ./librewolf.nix

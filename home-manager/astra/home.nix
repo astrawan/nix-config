@@ -186,6 +186,7 @@
     defaultSopsFile = ../../secrets/secrets.astra.yaml;
     gnupg.home = "${config.home.homeDirectory}/.gnupg";
     secrets = {
+      password_jellyfin = {};
       ssh_key_git_yk1 = {
         path = "${config.home.homeDirectory}/.ssh/git_yk1";
       };
