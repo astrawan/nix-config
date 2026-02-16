@@ -4,6 +4,7 @@
     ./brave.nix
     ./eza.nix
     ./fish.nix
+    ./gnupg.nix
     ./jellyfin-tui.nix
     ./lazygit.nix
     ./tmux.nix

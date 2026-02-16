@@ -22,7 +22,11 @@
 
   devlive.programs.bash.enable = true;
   devlive.programs.fish.enable = true;
-  devlive.programs.gnupg.enable = true;
+  devlive.programs.gnupg = {
+    enable = true;
+    # Get the imported key keygrip value with command `gpg -k --with-keygrip`
+    sshKeys = [ "50A310CD04463CA3653738D4C245D087C6AD5612" ];
+  };
   devlive.programs.jellyfin-tui = {
     enable = true;
     settings = {
