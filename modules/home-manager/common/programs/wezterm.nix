@@ -17,7 +17,9 @@ in
       config.color_scheme = '${color_scheme}'
       config.enable_tab_bar = false
       config.keys = {
-        { key = '/', mods = 'ALT', action = wezterm.action.ShowTabNavigator },
+        { key = ',', mods = 'ALT', action = wezterm.action.ShowTabNavigator },
+        { key = '/', mods = 'ALT', action = wezterm.action.Search({CaseSensitiveString=""}) },
+        { key = '[', mods = 'ALT', action = wezterm.action.ActivateCopyMode },
       }
       config.window_background_opacity = ${window_background_opacity}
       config.macos_window_background_blur = ${macos_window_background_blur}
