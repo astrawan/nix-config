@@ -22,9 +22,6 @@
           outer.top = 6;
         };
         mode.main.binding = {
-          alt-slash = "layout tiles horizontal vertical";
-          alt-comma = "layout accordion horizontal vertical";
-
           alt-h = "focus left";
           alt-j = "focus down";
           alt-k = "focus up";
@@ -44,6 +41,9 @@
           alt-7 = "workspace 7";
           alt-8 = "workspace 8";
           alt-9 = "workspace 9";
+          alt-f = "layout accordion tiles";
+          alt-down = "layout tiles horizontal vertical";
+          alt-up = "layout tiles vertical horizontal";
 
           alt-shift-1 = "move-node-to-workspace 1";
           alt-shift-2 = "move-node-to-workspace 2";
