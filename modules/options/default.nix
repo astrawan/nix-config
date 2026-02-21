@@ -3,7 +3,7 @@
     ./features
     ./host.nix
     ./infra
-    ./lxc.nix
+    ./lxc
     ./programs
     ./security
     ./services

@@ -6,6 +6,7 @@ in
 {
   imports = [
     ../common/users.nix
+    ./services
   ];
   config = lib.mkIf cfg.enable {
     nix.settings.sandbox = false;

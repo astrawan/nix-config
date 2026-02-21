@@ -79,6 +79,20 @@
             })
           ];
         };
+        "crowd.stack.devlive.cloud" = lib.nixosSystem {
+          system = linuxSystem;
+          modules = [
+            ({ modulesPath, ... }: {
+              imports = [
+                (modulesPath + "/virtualisation/proxmox-lxc.nix")
+                ./overlays/lxc.nix
+                ./modules/options
+                ./modules/nixos/lxc
+                ./nixos/crowd.stack.devlive.cloud/configuration.nix
+              ];
+            })
+          ];
+        };
       };
       darwinConfigurations = {
         Astrawans-MacBook-Pro = nix-darwin.lib.darwinSystem {
