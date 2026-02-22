@@ -139,6 +139,7 @@
             ({ ... }: {
               imports = [
                 zen-browser.homeModules.beta
+                ./overlays/darwin.nix
                 ./modules/options
                 ./modules/home-manager/workstation-darwin
                 ./profiles/astra/workstation-darwin.nix

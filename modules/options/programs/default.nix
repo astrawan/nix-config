@@ -14,6 +14,7 @@
     ./keystore-explorer.nix
     ./lazygit.nix
     ./librewolf.nix
+    ./omniwm.nix
     ./qbittorrent.nix
     ./tmux.nix
     ./vaults.nix
