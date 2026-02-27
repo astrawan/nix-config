@@ -1,6 +1,6 @@
 {
   imports = [
-    ../../common/virtualisation/podman.nix
+    ../../common/virtualisation
     ./libvirtd.nix
     ./waydroid.nix
   ];

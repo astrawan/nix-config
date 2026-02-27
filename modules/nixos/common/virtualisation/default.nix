@@ -1,8 +1,8 @@
+{ ... }:
+
 {
   imports = [
     ./docker.nix
-    ./libvirtd.nix
     ./podman.nix
-    ./waydroid.nix
   ];
 }

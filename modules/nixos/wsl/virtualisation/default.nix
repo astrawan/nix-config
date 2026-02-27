@@ -1,5 +1,5 @@
 {
   imports = [
-    ../../common/virtualisation/podman.nix
+    ../../common/virtualisation
   ];
 }

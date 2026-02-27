@@ -53,6 +53,6 @@ in
   devlive.services.usbguard.enable = true;
 
   devlive.virtualisation.libvirtd.enable = true;
-  devlive.virtualisation.podman.enable = true;
+  devlive.virtualisation.docker.enable = true;
   devlive.virtualisation.waydroid.enable = true;
 }
