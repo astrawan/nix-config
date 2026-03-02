@@ -6,5 +6,6 @@
     ./pipewire.nix
     ./tailscale.nix
     ./usbguard.nix
+    ./xwayland-satellite.nix
   ];
 }

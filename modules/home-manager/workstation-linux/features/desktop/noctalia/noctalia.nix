@@ -365,6 +365,7 @@ in
     dconf.settings."org/gnome/desktop/interface".gtk-theme = "adw-gtk3";
     dconf.settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
 
+    devlive.services.xwayland-satellite.enable = true;
     systemd.user.services.networkmanagerapplet = {
       Unit = {
         Description = "NetworkManager applet";
