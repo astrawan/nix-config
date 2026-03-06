@@ -67,7 +67,6 @@ in
     programs.imv.enable = true;
     # Media player
     programs.mpv.enable = true;
-    programs.quickshell.enable = true;
     programs.noctalia-shell = {
       enable = true;
       package = pkgs.noctalia-shell.override { calendarSupport = true; };
@@ -171,6 +170,20 @@ in
           showScreenCorners = true;
           showSessionButtonsOnLockScreen = false;
         };
+        idle = {
+          enabled = true;
+          screenOffTimeout = 600;
+          lockTimeout = 660;
+          suspendTimeout = 1800;
+          fadeDuration = 5;
+          screenOffCommand = "";
+          lockCommand = "";
+          suspendCommand = "";
+          resumeScreenOffCommand = "";
+          resumeLockCommand = "";
+          resumeSuspendCommand = "";
+          customCommands = "[]";
+        };
         location = {
           name = "Kuta, Indonesia";
         };
@@ -215,7 +228,6 @@ in
           panelBackgroundOpacity = 1;
         };
       };
-      systemd.enable = true;
     };
     # Enable zen browser transparency and custom layout
     programs.zen-browser.profiles.default.settings = lib.mkIf config.devlive.programs.zen-browser.enable {
@@ -312,44 +324,6 @@ in
         };
       };
     };
-    services.hypridle = lib.mkIf (desktop.noctalia.compositor == "hyprland") {
-      enable = true;
-      settings = {
-        general = {
-          ignore_dbus_inhibit = false;
-          lock_cmd = "noctalia-shell ipc call lockScreen lock";
-        };
-        listener = [
-          # Lock the screen
-          {
-            # 5 minutes
-            timeout = 300;
-            on-timeout = "noctalia-shell ipc call lockScreen lock";
-          }
-          # Turn off the screen
-          {
-            # 15 minutes
-            timeout = 900;
-            on-timeout = "hyprctl dispatch dpms off";
-            on-resume = "hyprctl dispatch dpms on";
-          }
-        ];
-      };
-    };
-    services.swayidle = lib.mkIf (desktop.noctalia.compositor == "niri") {
-      enable = true;
-      timeouts = [
-        {
-          timeout = 300;
-          command = "${(lib.getExe config.programs.noctalia-shell.package)} ipc call lockScreen lock";
-        }
-        {
-          timeout = 900;
-          command = "${(lib.getExe pkgs.niri)} msg action power-off-monitors";
-          resumeCommand = "${(lib.getExe pkgs.niri)} msg power-on-monitors";
-        }
-      ];
-    };
     services.tailscale-systray.enable = true;
     services.udiskie = {
       enable = true;
@@ -421,7 +395,7 @@ in
         RestartSec = 10;
       };
       Unit = {
-        Requires = [ "noctalia-shell.service" ];
+        Requires = [ "niri.service" ];
       };
     };
 

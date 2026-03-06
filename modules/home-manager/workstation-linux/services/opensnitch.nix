@@ -72,12 +72,10 @@ in
     systemd.user.services.opensnitch-ui.Unit = {
       After = [
         "tray.target"
-      ]
-      ++(if desktop.type == "noctalia" then [ "noctalia-shell.service" ] else []);
+      ];
       Requires = [
         "tray.target"
-      ]
-      ++(if desktop.type == "noctalia" then [ "noctalia-shell.service" ] else []);
+      ];
     };
   };
 }
