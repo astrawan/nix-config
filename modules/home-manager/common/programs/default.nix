@@ -8,6 +8,7 @@
     ./jellyfin-tui.nix
     ./lazygit.nix
     ./tmux.nix
+    ./vscode.nix
     ./wezterm.nix
     ./yazi.nix
     ./zathura.nix

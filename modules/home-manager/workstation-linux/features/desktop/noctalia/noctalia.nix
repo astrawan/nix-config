@@ -194,7 +194,7 @@ in
           pywalfox = false;
           vicinae = false;
           walker = false;
-          code = false;
+          code = config.devlive.programs.vscode.enable;
           spicetify = false;
           telegram = true;
           cava = false;

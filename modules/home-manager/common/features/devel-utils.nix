@@ -19,5 +19,6 @@ in
     programs.ripgrep.enable = true;
 
     devlive.programs.lazygit.enable = true;
+    devlive.programs.vscode.enable = true;
   };
 }

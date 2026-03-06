@@ -18,6 +18,7 @@
     ./qbittorrent.nix
     ./tmux.nix
     ./vaults.nix
+    ./vscode.nix
     ./wezterm.nix
     ./yazi.nix
     ./zathura.nix
