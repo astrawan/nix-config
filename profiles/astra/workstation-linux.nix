@@ -39,8 +39,7 @@ in
 
   devlive.programs.aegisub.enable = true;
   devlive.programs.keystore-explorer.enable = true;
-  devlive.programs.qbittorrent.enable = lib.mkIf (desktop.noctalia.compositor == "hyprland") true;
-  devlive.programs.fragments.enable = lib.mkIf (desktop.noctalia.compositor == "niri") true;
+  devlive.programs.qbittorrent.enable = lib.mkIf (desktop.type == "noctalia") true;
 
   devlive.security.auditd.enable = true;
   devlive.security.sudo-rs.enable = true;
