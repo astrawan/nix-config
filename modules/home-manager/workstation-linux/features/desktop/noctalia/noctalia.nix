@@ -181,7 +181,7 @@ in
           suspendCommand = "";
           resumeScreenOffCommand = "";
           resumeLockCommand = "";
-          resumeSuspendCommand = "";
+          resumeSuspendCommand = "echo nope";
           customCommands = "[]";
         };
         location = {
@@ -324,7 +324,7 @@ in
         };
       };
     };
-    services.tailscale-systray.enable = true;
+    services.tailscale-systray.enable = lib.mkIf (config.devlive.services.tailscale.enable) true;
     services.udiskie = {
       enable = true;
       settings = {
