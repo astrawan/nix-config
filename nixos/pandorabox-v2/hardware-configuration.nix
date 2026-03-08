@@ -50,6 +50,13 @@
       device = "/dev/disk/by-uuid/b5c1c4d8-dab8-4404-985f-d7034a08afb5";
     }
   ];
+  # NOTE: disable suspend due freeze after wakeup
+  systemd.sleep.extraConfig = ''
+    AllowSuspend=no
+    AllowHibernation=yes
+    AllowHybridSleep=no
+    AllowSuspendThenHibernate=no
+  '';
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
