@@ -15,6 +15,9 @@
         networkmanager-openconnect
       ];
     };
+    networking.extraHosts = ''
+      127.0.0.1 development.local
+    '';
 
     # Open ports in the firewall.
     # networking.firewall.allowedTCPPorts = [ ... ];
