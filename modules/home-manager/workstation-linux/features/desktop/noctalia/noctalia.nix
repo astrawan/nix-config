@@ -162,7 +162,10 @@ in
             }
           ];
         };
-        colorSchemes.predefinedScheme = "Noctalia (default)";
+        colorSchemes = {
+          useWallpaperColors = true;
+          predefinedScheme = "Noctalia (default)";
+        };
         general = {
           allowPanelsOnScreenWithoutBar = true;
           compactLockScreen = true;
