@@ -22,6 +22,7 @@ in
         { key = ',', mods = 'ALT', action = wezterm.action.ShowTabNavigator },
         { key = '/', mods = 'ALT', action = wezterm.action.Search({CaseSensitiveString=""}) },
         { key = '[', mods = 'ALT', action = wezterm.action.ActivateCopyMode },
+        { key = 'V', mods = 'CTRL', action = wezterm.action.PasteFrom 'PrimarySelection' },
       }
       config.window_background_opacity = ${window_background_opacity}
       config.macos_window_background_blur = ${macos_window_background_blur}
