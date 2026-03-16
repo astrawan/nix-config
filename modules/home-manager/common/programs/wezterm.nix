@@ -11,6 +11,8 @@ in
   config = lib.mkIf cfg.enable {
     programs.wezterm.enable = true;
     programs.wezterm.extraConfig = ''
+      wezterm.add_to_config_reload_watch_list(wezterm.config_dir .. "/colors")
+
       local config = wezterm.config_builder()
 
       config.font = wezterm.font("FiraCode Nerd Font Mono", {weight="Medium", stretch="Normal", style="Normal"})
