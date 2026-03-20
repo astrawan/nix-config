@@ -31,7 +31,6 @@ in
     ]);
     noctalia = lib.mkIf (desktop.type == "noctalia") {
       compositor = "niri";
-      wallpaperRolling.enable = true;
     };
   };
   devlive.features.devel-android.enable = true;
