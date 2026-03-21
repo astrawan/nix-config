@@ -112,7 +112,22 @@ in
                   "nm-applet"
                   "opensnitch-ui"
                   "udiskie"
-                ];
+                ]
+                ++ (
+                  if config.devlive.services.tailscale.enable then
+                    [ "systray_*" ]
+                  else []
+                )
+                ++ (
+                    if desktop.enableTelegram then
+                      [ "Telegram Desktop" ]
+                    else []
+                )
+                ++ (
+                    if desktop.enableWhatsApp then
+                      [ "ZapZap" ]
+                    else []
+                );
               }
               {
                 id = "NotificationHistory";
