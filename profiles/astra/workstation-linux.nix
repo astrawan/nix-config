@@ -11,6 +11,7 @@ in
 
   devlive.features.desktop = {
     type = "noctalia";
+    enableWhatsApp = true;
     extraHomePackages = with pkgs; [
         freerdp
         gimp
