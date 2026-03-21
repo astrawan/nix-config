@@ -11,6 +11,7 @@ in
 
   devlive.features.desktop = {
     type = "noctalia";
+    enableTelegram = true;
     enableWhatsApp = true;
     extraHomePackages = with pkgs; [
         freerdp
@@ -19,7 +20,6 @@ in
         inkscape
         libreoffice
         popcorntime
-        telegram-desktop
         wireshark
     ];
     gnome.extraHomePackages = lib.mkIf (desktop.type == "gnome") (with pkgs; [

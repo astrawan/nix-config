@@ -210,7 +210,7 @@ in
           walker = false;
           code = config.devlive.programs.vscode.enable;
           spicetify = false;
-          telegram = true;
+          telegram = desktop.enableTelegram;
           cava = false;
           yazi = config.programs.yazi.enable;
           emacs = false;

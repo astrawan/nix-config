@@ -25,6 +25,7 @@
       description = "Default Web Browser";
       example = "zen-browser";
     };
+    enableTelegram = lib.mkEnableOption "enableTelegram";
     enableWhatsApp = lib.mkEnableOption "enableWhatsApp";
     extraPackages = lib.mkOption {
       type = with lib.types; listOf package;

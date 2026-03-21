@@ -8,9 +8,6 @@ in
     home.packages = desktop.extraHomePackages ++desktop.gnome.extraHomePackages;
 
     xdg.mimeApps.defaultApplications = {
-      "x-scheme-handler/tg" = "org.telegram.desktop.desktop";
-      "x-scheme-handler/tonsite" = "org.telegram.desktop.desktop";
-
       "image/jpeg" = "org.gnome.Loupe.desktop";
       "image/png" = "org.gnome.Loupe.desktop";
       "image/gif" = "org.gnome.Loupe.desktop";
@@ -55,7 +52,15 @@ in
       "image/x-wmf" = "gimp.desktop";
       "image/jp2" = "gimp.desktop";
       "image/x-xcursor" = "gimp.desktop";
-    };
+    }
+    // (
+      if desktop.enableTelegram then
+        {
+          "x-scheme-handler/tg" = "org.telegram.desktop.desktop";
+          "x-scheme-handler/tonsite" = "org.telegram.desktop.desktop";
+        }
+      else {}
+    );
 
     dconf.enable = true;
     dconf.settings."org/gnome/desktop/background" = {
@@ -138,9 +143,12 @@ in
         else
           []
       )
-      ++ [
-        "org.telegram.desktop.desktop"
-      ]
+      ++ (
+        if desktop.enableTelegram then
+          ["org.telegram.desktop.desktop"]
+        else
+          []
+      )
       ++ (
         if config.devlive.features.devel-utils.enable then
           ["dbeaver.desktop"]

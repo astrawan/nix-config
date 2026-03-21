@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 
 let
   cfg = config.devlive.features.desktop;
@@ -10,6 +10,9 @@ in
     };
     home.sessionPath = [ "$HOME/.local/bin" ];
 
+    home.packages = lib.mkIf(cfg.enableTelegram) (with pkgs; [
+      telegram-desktop
+    ]);
     programs.zapzap = lib.mkIf(cfg.enableWhatsApp) {
       enable = true;
       settings = {
