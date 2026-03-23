@@ -11,17 +11,8 @@ in
 
     home.sessionVariables.DISPLAY = ":0";
 
-    systemd.user.services."xwayland-satellite" = {
-      Service = {
-        ExecStart = "${pkgs.xwayland-satellite}/bin/${pkgs.xwayland-satellite.meta.mainProgram}";
-        Restart = "on-failure";
-        RestartSec = 2;
-        StartLimitBurst = 5;
-      };
-      Unit = {
-        After = [ "graphical-session.target" ];
-        PartOf = [ "graphical-session.target" ];
-      };
+    xdg.configFile."systemd/user/default.target.wants/xwayland-satellite.service" = {
+      source = "${pkgs.xwayland-satellite}/share/systemd/user/xwayland-satellite.service";
     };
   };
 }
