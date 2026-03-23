@@ -18,7 +18,8 @@ in
       networkmanagerapplet
       # noctalia schema installation
       python3
-      wayclip
+      cliphist
+      wl-clipboard
     ] ++desktop.extraHomePackages ++desktop.noctalia.extraHomePackages;
     home.file.".config/qt6ct/qt6ct.conf".text = lib.generators.toINI {} {
       Appearance = {
@@ -55,6 +56,7 @@ in
         gvfs = pkgs.yaziPlugins.gvfs;
         mount = pkgs.yaziPlugins.mount;
         recycle-bin = pkgs.yaziPlugins.recycle-bin;
+        wl-clipboard = pkgs.yaziPlugins.wl-clipboard;
       };
     };
     # Document viewer
@@ -70,6 +72,7 @@ in
       package = pkgs.noctalia-shell.override { calendarSupport = true; };
       settings = {
         appLauncher = {
+          enableClipboardHistory = true;
           position = "follow_bar";
           terminalCommand = "devlive-desktop-terminal -e";
           viewMode = "grid";

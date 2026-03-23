@@ -126,6 +126,13 @@ in
             on = [ "P" ];
             desc = "How or hide the preview pane";
           }
+        ] else [ ])
+        ++(if (builtins.hasAttr "wl-clipboard" config.programs.yazi.plugins) then [
+            {
+              run = "plugin wl-clipboard";
+              on = [ ">" "y" ];
+              desc = "Copy to clipboard";
+            }
         ] else [ ]);
       };
       plugins = {
