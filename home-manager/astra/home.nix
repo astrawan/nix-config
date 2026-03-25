@@ -1,14 +1,17 @@
 # vi: sw=2 ts=2 et
 { config, lib, pkgs, ... }:
 
+let
+  user = config.devlive.user;
+in
 {
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "${config.devlive.user.name}";
-  home.homeDirectory = if pkgs.stdenv.hostPlatform.isDarwin then "/Users/${config.devlive.user.name}" else "/home/${config.devlive.user.name}";
+  home.username = "${user.name}";
+  home.homeDirectory = if pkgs.stdenv.hostPlatform.isDarwin then "/Users/${user.name}" else "/home/${user.name}";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -71,9 +74,9 @@
         forceSignAnnotated = true;
       };
       user = {
-        signingkey = "A6113EB4F50442EA";
-        email = "${config.devlive.user.email}";
-        name = "${config.devlive.user.fullName}";
+        signingkey = user.gpg.publicKey.id;
+        email = "${user.email}";
+        name = "${user.fullName}";
       };
     };
   };

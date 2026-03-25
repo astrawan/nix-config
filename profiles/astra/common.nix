@@ -8,8 +8,13 @@
   };
 
   devlive.user = {
+    id = 1000;
     name = "astra";
     fullName = "Astrawan Wayan";
+    gpg = {
+      publicKey.fingerprint = "E69DFA903C39AA28F990464EA6113EB4F50442EA";
+      sshKeys = [ "50A310CD04463CA3653738D4C245D087C6AD5612" ];
+    };
     groups = [ "networkmanager" "wheel" ];
     email = "astra@pm.me";
     packages = with pkgs; [
@@ -22,11 +27,6 @@
 
   devlive.programs.bash.enable = true;
   devlive.programs.fish.enable = true;
-  devlive.programs.gnupg = {
-    enable = true;
-    # Get the imported key keygrip value with command `gpg -k --with-keygrip`
-    sshKeys = [ "50A310CD04463CA3653738D4C245D087C6AD5612" ];
-  };
   devlive.programs.jellyfin-tui = {
     enable = true;
     settings = {

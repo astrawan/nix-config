@@ -1,7 +1,6 @@
 {
   imports = [
     ../../common/programs
-    ./gnupg.nix
     ./fish.nix
     ./wezterm.nix
     ./yazi.nix

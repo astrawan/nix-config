@@ -7,6 +7,7 @@
   };
 
   devlive.user = {
+    id = 1000;
     name = "astra";
     fullName = "Astrawan Wayan";
     groups = [ "wheel" ];

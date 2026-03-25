@@ -1,10 +1,14 @@
 { config, ... }:
 
+let
+  user = config.devlive.user;
+in
 {
   users.users.${config.devlive.user.name} = {
     isNormalUser = true;
-    description = "${config.devlive.user.fullName}";
-    extraGroups = config.devlive.user.groups;
-    packages = config.devlive.user.packages;
+    description = "${user.fullName}";
+    extraGroups = user.groups;
+    packages = user.packages;
+    uid = user.id;
   };
 }

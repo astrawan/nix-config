@@ -3,5 +3,6 @@
     ./features
     ./packages.nix
     ./programs
+    ./user.nix
   ];
 }
