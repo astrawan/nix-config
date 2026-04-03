@@ -13,6 +13,7 @@
     fullName = "Astrawan Wayan";
     gpg = {
       publicKey.fingerprint = "E69DFA903C39AA28F990464EA6113EB4F50442EA";
+      # Get the imported key keygrip value with command `gpg -k --with-keygrip`
       sshKeys = [ "50A310CD04463CA3653738D4C245D087C6AD5612" ];
     };
     groups = [ "networkmanager" "wheel" ];
