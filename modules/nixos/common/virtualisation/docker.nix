@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 
 let
   cfg = config.devlive.virtualisation.docker;
@@ -8,6 +8,7 @@ in
     virtualisation = {
       docker.enable = true;
     };
+    environment.systemPackages = [ pkgs.docker-buildx ];
 
     users.users."${config.devlive.user.name}".extraGroups = [ "docker" ];
   };
