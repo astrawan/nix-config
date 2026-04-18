@@ -8,6 +8,8 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    niri.url = "github:niri-wm/niri/9e5716a9dbf7dbf9622a95a5bd23a898867759c6";
+    niri.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     noctalia.url = "github:noctalia-dev/noctalia-shell";
@@ -16,7 +18,7 @@
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, nixos-wsl, home-manager, nix-darwin, sops-nix, noctalia, zen-browser, ... }:
+  outputs = { nixpkgs, nixos-wsl, home-manager, niri, nix-darwin, sops-nix, noctalia, zen-browser, ... }:
     let
       lib = nixpkgs.lib;
       darwinSystem = "aarch64-darwin";
@@ -26,6 +28,7 @@
         pandorabox = lib.nixosSystem {
           system = linuxSystem;
           modules = [
+            { nixpkgs.overlays = [ niri.overlays.default ]; }
             ({ ... }: {
               imports = [
                 ./overlays/workstation.nix
@@ -40,6 +43,7 @@
         pandorabox-v2 = lib.nixosSystem {
           system = linuxSystem;
           modules = [
+            { nixpkgs.overlays = [ niri.overlays.default ]; }
             ({ ... }: {
               imports = [
                 ./overlays/workstation.nix
