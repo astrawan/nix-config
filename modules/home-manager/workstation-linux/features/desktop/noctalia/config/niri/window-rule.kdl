@@ -9,7 +9,7 @@ window-rule {
   clip-to-geometry true
 
   draw-border-with-background false
-  // Blur them all without xray for a better look
+  // https://niri-wm.github.io/niri/Configuration%3A-Window-Rules.html#background-effect
   background-effect {
     blur true
     xray false

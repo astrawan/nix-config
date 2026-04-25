@@ -183,10 +183,15 @@ in
           useWallpaperColors = true;
           predefinedScheme = "Noctalia (default)";
         };
+        dock = {
+          backgroundOpacity = 0.8;
+        };
         general = {
           allowPanelsOnScreenWithoutBar = true;
           compactLockScreen = true;
           enableShadows = false;
+          lockScreenMonitors = [ "eDP-1" ];
+          lockScreenBlur =  1;
           showScreenCorners = true;
           showSessionButtonsOnLockScreen = false;
         };
