@@ -48,6 +48,7 @@ in
       enable = true;
       defaultTerminalEmulator = true;
       settings.color_scheme = "Noctalia";
+      settings.window_background_opacity = 0.8;
     };
     # File manager
     devlive.programs.yazi = {
@@ -244,7 +245,7 @@ in
         ui = {
           fontDefault = "DejaVu Sans";
           fontFixed = "FiraCode Nerd Font Mono";
-          panelBackgroundOpacity = 1;
+          panelBackgroundOpacity = 0.8;
         };
       };
     };

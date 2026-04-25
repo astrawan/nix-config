@@ -15,7 +15,7 @@ in
       window-padding-x = 8;
     };
 
-    programs.ghostty.settings.background-opacity = lib.mkIf (desktop.type == "noctalia" && desktop.noctalia.compositor == "hyprland") 0.8;
+    programs.ghostty.settings.background-opacity = lib.mkIf (desktop.type == "noctalia") 0.8;
     programs.ghostty.settings.theme = lib.mkIf (desktop.type == "noctalia") "noctalia";
 
     devlive.features.desktop.defaultTerminalEmulator = lib.mkIf (cfg.defaultTerminalEmulator) pkgs.ghostty;

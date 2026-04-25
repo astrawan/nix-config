@@ -7,4 +7,11 @@ window-rule {
 
   // Clips window contents to the rounded corner boundaries.
   clip-to-geometry true
+
+  draw-border-with-background false
+  // Blur them all without xray for a better look
+  background-effect {
+    blur true
+    xray false
+  }
 }
