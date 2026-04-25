@@ -8,7 +8,7 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    niri.url = "github:niri-wm/niri/8d583fe854647951ff83a370c87c823589276e5f";
+    niri.url = "github:niri-wm/niri/8ed0da44d974c32c6877d2f4630c314da0717ecb";
     niri.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
