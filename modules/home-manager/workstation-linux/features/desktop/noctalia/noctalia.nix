@@ -243,7 +243,7 @@ in
           mango = false;
           zathura = config.programs.zathura.enable;
           zed = false;
-          zenBrowser = config.devlive.programs.zen-browser.enable;
+          zenBrowser = false;
           helix = false;
           enableUserTemplates = false;
         };
@@ -260,7 +260,7 @@ in
       "zen.view.compact.hide-tabbar" = true;
       "zen.view.compact.hide-toolbar" = false;
       "zen.view.grey-out-inactive-windows" = false;
-      "zen.widget.linux.transparency" = if (desktop.noctalia.compositor == "hyprland") then true else false;
+      "zen.widget.linux.transparency" = true;
     };
     wayland.windowManager.hyprland = lib.mkIf (desktop.noctalia.compositor == "hyprland") {
       enable = true;
