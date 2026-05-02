@@ -27,18 +27,8 @@
       enable = true;
       allowPing = false;
       # kde-connect
-      allowedTCPPortRanges = [
-        {
-          from = 1714;
-          to = 1764;
-        }
-      ];
-      allowedUDPPortRanges = [
-        {
-          from = 1714;
-          to = 1764;
-        }
-      ];
+      allowedTCPPortRanges = [];
+      allowedUDPPortRanges = [];
       allowedTCPPorts = [];
       allowedUDPPorts = [];
       checkReversePath = "loose";
