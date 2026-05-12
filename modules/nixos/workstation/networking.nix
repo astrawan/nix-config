@@ -17,6 +17,7 @@
     };
     networking.extraHosts = ''
       127.0.0.1 development.local
+      127.0.0.1 idm.development.local
     '';
 
     # Open ports in the firewall.
