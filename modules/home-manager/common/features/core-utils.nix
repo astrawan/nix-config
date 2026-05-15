@@ -7,13 +7,13 @@ in
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       dig
+      jaq
       p7zip-rar
       tcpdump
       unzip
       wget
     ];
 
-    programs.jq.enable = true;
     programs.starship.enable = true;
 
     devlive.programs.zellij.enable = true;
