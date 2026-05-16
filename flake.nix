@@ -14,11 +14,13 @@
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     noctalia.url = "github:noctalia-dev/noctalia-shell";
     noctalia.inputs.nixpkgs.follows = "nixpkgs";
+    noctalia5.url = "github:noctalia-dev/noctalia-shell/v5";
+    noctalia5.inputs.nixpkgs.follows = "nixpkgs";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, nixos-wsl, home-manager, niri, nix-darwin, sops-nix, noctalia, zen-browser, ... }:
+  outputs = { nixpkgs, nixos-wsl, home-manager, niri, nix-darwin, sops-nix, noctalia, noctalia5, zen-browser, ... }:
     let
       lib = nixpkgs.lib;
       darwinSystem = "aarch64-darwin";
@@ -106,7 +108,9 @@
       };
       homeConfigurations = {
         astra-linux = home-manager.lib.homeManagerConfiguration {
-          pkgs = (nixpkgs.legacyPackages.${linuxSystem}.extend noctalia.overlays.default);
+          pkgs = ((nixpkgs.legacyPackages.${linuxSystem}.extend noctalia.overlays.default).extend (final: prev: {
+            noctalia-shell-5 = noctalia5.packages.${linuxSystem}.default;
+          }));
           modules = [
             sops-nix.homeManagerModules.sops
             ({ ... }: {

@@ -20,7 +20,17 @@ in
       python3
       cliphist
       wl-clipboard
-    ] ++desktop.extraHomePackages ++desktop.noctalia.extraHomePackages;
+    ] ++desktop.extraHomePackages ++desktop.noctalia.extraHomePackages ++(
+      if desktop.noctalia.package == pkgs.noctalia-shell-5 then
+        [ desktop.noctalia.package ]
+      else
+        []
+    ) ++(
+      if desktop.noctalia.compositor == "niri" then
+        [ pkgs.xwayland-satellite ]
+      else
+        []
+    );
     home.file.".config/qt6ct/qt6ct.conf".text = lib.generators.toINI {} {
       Appearance = {
         color_scheme_path = "${config.xdg.configHome}/qt6ct/colors/noctalia.conf";
@@ -68,9 +78,9 @@ in
     programs.imv.enable = true;
     # Media player
     programs.mpv.enable = true;
-    programs.noctalia-shell = {
+    programs.noctalia-shell = lib.mkIf (desktop.noctalia.package == pkgs.noctalia-shell) {
       enable = true;
-      package = pkgs.noctalia-shell.override { calendarSupport = true; };
+      package = desktop.noctalia.package.override { calendarSupport = true; };
       settings = {
         appLauncher = {
           enableClipboardHistory = true;
@@ -254,6 +264,153 @@ in
         };
       };
     };
+    home.file.".config/noctalia/settings.toml" = lib.mkIf (desktop.noctalia.package == pkgs.noctalia-shell-5) {
+      source = (pkgs.formats.toml {}).generate "noctalia-shell-5-settings.toml" {
+        bar.default = {
+          background_opacity = 1.0;
+          center = [
+            "cpu"
+            "temp"
+            "ram"
+          ];
+          margin_edge = 0;
+          margin_ends = 0;
+          position = "left";
+          radius = 0;
+          shadow = true;
+          start = [
+            "launcher"
+            "clock"
+            "date"
+            "wallpaper"
+            "workspaces"
+          ];
+          thickness = 48;
+          widget_spacing = 8;
+        };
+
+        control_center = {
+          compact = false;
+        };
+
+        dock = {
+          auto_hide = true;
+          background_opacity = 1.0;
+          enabled = true;
+        };
+
+        idle = {
+          behavior_order = [
+            "lock"
+            "screen-off"
+            "suspend"
+          ];
+          behavior = {
+            lock = {
+              action = "lock";
+              enabled = true;
+              timeout = 600;
+            };
+            screen-off = {
+              action = "screen_off";
+              enabled = true;
+              timeout = 660;
+            };
+            suspend = {
+              action = "suspend";
+              enabled = true;
+              lock_before_suspend = true;
+              timeout = 900;
+            };
+          };
+        };
+
+        notification = {
+          background_opacity = 1.0;
+          position = "bottom_left";
+        };
+
+        osd = {
+          lock_keys = false;
+          position = "top_center";
+        };
+
+        shell = {
+          font_family = "Adwaita Mono";
+          telemetry_enabled = false;
+
+          panel = {
+            attach_clipboard = false;
+            attach_control_center = false;
+            attach_launcher = false;
+            attach_session = false;
+            attach_wallpaper = false;
+            clipboard_placement = "attached";
+            control_center_placement = "attached";
+            launcher_placement = "attached";
+            session_placement = "attached";
+            transparency_mode = "solid";
+            wallpaper_placement = "attached";
+          };
+
+          screen_corners = {
+            enabled = false;
+          };
+        };
+
+        theme = {
+          source = "wallpaper";
+
+          templates = {
+            builtin_ids = [
+              "gtk3"
+              "gtk4"
+              "kcolorscheme"
+              "niri"
+              "qt"
+              "starship"
+              "wezterm"
+            ];
+            community_ids = [
+              "telegram"
+              "yazi"
+              "vscode"
+              "zathura"
+            ];
+          };
+        };
+
+        wallpaper = {
+          directory = "~/Pictures/Wallpapers";
+
+          default = {
+            path = "${config.home.homeDirectory}/Pictures/Wallpapers/wallhaven_j38o75.jpg";
+          };
+        };
+
+        weather = {
+          auto_locate = true;
+        };
+
+        widget = {
+          cpu = {
+            show_label = false;
+          };
+          network = {
+            show_label = false;
+          };
+          ram = {
+            show_label = false;
+          };
+          temp = {
+            show_label = false;
+          };
+          control-center = {
+            glyph = "snowflake";
+          };
+        };
+      };
+    };
     # Enable zen browser transparency and custom layout
     programs.zen-browser.profiles.default.settings = lib.mkIf config.devlive.programs.zen-browser.enable {
       "browser.tabs.inTitlebar" = if (desktop.noctalia.compositor == "hyprland") then 0 else 2;
@@ -319,7 +476,12 @@ in
       source = ./config/niri/config.kdl;
     };
     xdg.configFile."niri/binds.kdl" = lib.mkIf (desktop.noctalia.compositor == "niri") {
-      source = ./config/niri/binds.kdl;
+      source = (
+        if (desktop.noctalia.package == pkgs.noctalia-shell) then
+          ./config/niri/binds-noctalia-4.kdl
+        else
+          ./config/niri/binds-noctalia-5.kdl
+      );
     };
     xdg.configFile."niri/input.kdl" = lib.mkIf (desktop.noctalia.compositor == "niri") {
       source = ./config/niri/input.kdl;
@@ -328,10 +490,23 @@ in
       source = ./config/niri/output.kdl;
     };
     xdg.configFile."niri/layer-rule.kdl" = lib.mkIf (desktop.noctalia.compositor == "niri") {
-      source = ./config/niri/layer-rule.kdl;
+      source = (
+        if (desktop.noctalia.package == pkgs.noctalia-shell) then
+          ./config/niri/layer-rule-noctalia-4.kdl
+        else
+          ./config/niri/layer-rule-noctalia-5.kdl
+      );
     };
     xdg.configFile."niri/layout.kdl" = lib.mkIf (desktop.noctalia.compositor == "niri") {
       source = ./config/niri/layout.kdl;
+    };
+    xdg.configFile."niri/spawn-at-startup.kdl" = lib.mkIf (desktop.noctalia.compositor == "niri") {
+      source = (
+        if (desktop.noctalia.package == pkgs.noctalia-shell) then
+          ./config/niri/spawn-at-startup-noctalia-4.kdl
+        else
+          ./config/niri/spawn-at-startup-noctalia-5.kdl
+      );
     };
     xdg.configFile."niri/window-rule.kdl" = lib.mkIf (desktop.noctalia.compositor == "niri") {
       source = ./config/niri/window-rule.kdl;
@@ -364,7 +539,6 @@ in
     dconf.settings."org/gnome/desktop/interface".gtk-theme = "adw-gtk3";
     dconf.settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
 
-    devlive.services.xwayland-satellite.enable = true;
     systemd.user.services.networkmanagerapplet = {
       Unit = {
         Description = "NetworkManager applet";

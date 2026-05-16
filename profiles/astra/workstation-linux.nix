@@ -32,6 +32,7 @@ in
     ]);
     noctalia = lib.mkIf (desktop.type == "noctalia") {
       compositor = "niri";
+      package = pkgs.noctalia-shell-5;
     };
   };
   devlive.features.devel-android.enable = true;

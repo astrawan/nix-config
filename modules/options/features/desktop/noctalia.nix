@@ -1,7 +1,11 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   options.devlive.features.desktop.noctalia = {
+    package = lib.mkOption {
+      type = lib.types.package;
+      default = pkgs.noctalia-shell;
+    };
     compositor = lib.mkOption {
       type = lib.types.enum [
         "hyprland"
