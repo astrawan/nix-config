@@ -14,12 +14,12 @@ in
     enableTelegram = true;
     enableWhatsApp = true;
     extraHomePackages = with pkgs; [
-        freerdp
         gimp
         gradia
         inkscape
         libreoffice
         popcorntime
+        remmina
         wireshark
     ];
     gnome.extraHomePackages = lib.mkIf (desktop.type == "gnome") (with pkgs; [
