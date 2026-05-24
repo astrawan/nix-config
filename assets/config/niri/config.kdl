@@ -64,5 +64,5 @@ include "./window-rule.kdl"
 
 include "./workspace.kdl"
 
-include "./noctalia.kdl"
+include "./extra.kdl"
 

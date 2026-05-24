@@ -7,8 +7,10 @@
     ./folio.nix
     ./fragments.nix
     ./ghostty.nix
+    ./hyprland.nix
     ./keystore-explorer.nix
     ./librewolf.nix
+    ./niri.nix
     ./qbittorrent.nix
     ./vaults.nix
     ./wezterm.nix

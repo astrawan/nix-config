@@ -25,11 +25,6 @@ in
         [ desktop.noctalia.package ]
       else
         []
-    ) ++(
-      if desktop.noctalia.compositor == "niri" then
-        [ pkgs.xwayland-satellite ]
-      else
-        []
     );
     home.file.".config/qt6ct/qt6ct.conf".text = lib.generators.toINI {} {
       Appearance = {
@@ -54,6 +49,12 @@ in
       };
     };
     devlive.programs.eza.enable = true;
+    devlive.programs.niri = lib.mkIf (desktop.noctalia.compositor == "niri") {
+      enable = true;
+    };
+    devlive.programs.hyprland = lib.mkIf (desktop.noctalia.compositor == "hyprland") {
+      enable = true;
+    };
     devlive.programs.wezterm = {
       enable = true;
       defaultTerminalEmulator = true;
@@ -366,17 +367,46 @@ in
               "gtk3"
               "gtk4"
               "kcolorscheme"
-              "niri"
               "qt"
-              "starship"
-              "wezterm"
-            ];
-            community_ids = [
-              "telegram"
-              "yazi"
-              "vscode"
-              "zathura"
-            ];
+            ] ++(
+              if (config.programs.starship.enable) then
+                [ "starship" ]
+              else
+                []
+            ) ++(
+              if (config.programs.wezterm.enable) then
+                [ "wezterm" ]
+              else
+                []
+            ) ++(
+              if (desktop.noctalia.compositor == "hyprland") then
+                [ "hyprland" ]
+              else if (desktop.noctalia.compositor == "niri") then
+                [ "niri" ]
+              else
+                []
+            );
+            community_ids = (
+              if (desktop.enableTelegram) then
+                [ "telegram" ]
+              else
+                []
+            ) ++(
+              if (config.devlive.programs.vscode.enable) then
+                [ "vscode" ]
+              else
+                []
+            ) ++(
+              if (config.devlive.programs.yazi.enable) then
+                [ "yazi" ]
+              else
+                []
+            ) ++(
+              if (config.devlive.programs.zathura.enable) then
+                [ "zathura" ]
+              else
+                []
+            );
           };
         };
 
@@ -418,101 +448,6 @@ in
       "zen.view.compact.hide-toolbar" = false;
       "zen.view.grey-out-inactive-windows" = false;
       "zen.widget.linux.transparency" = true;
-    };
-    wayland.windowManager.hyprland = lib.mkIf (desktop.noctalia.compositor == "hyprland") {
-      enable = true;
-      settings = {
-        source = [
-          "${config.xdg.configHome}/hypr/autostart.conf"
-          "${config.xdg.configHome}/hypr/binds.conf"
-          "${config.xdg.configHome}/hypr/common.conf"
-          "${config.xdg.configHome}/hypr/env.conf"
-          "${config.xdg.configHome}/hypr/input.conf"
-          "${config.xdg.configHome}/hypr/laf.conf"
-          "${config.xdg.configHome}/hypr/permissions.conf"
-          "${config.xdg.configHome}/hypr/rules.conf"
-          "${config.xdg.configHome}/hypr/noctalia/noctalia-colors.conf"
-        ]
-        ++(if config.programs.ghostty.enable then [ "${config.xdg.configHome}/hypr/rules-ghostty.conf" ] else [])
-        ++(if config.programs.wezterm.enable then [ "${config.xdg.configHome}/hypr/rules-wezterm.conf" ] else []);
-      };
-    };
-
-    xdg.configFile."hypr/autostart.conf" = lib.mkIf (desktop.noctalia.compositor == "hyprland") {
-      source = ./config/hypr/autostart.conf;
-    };
-    xdg.configFile."hypr/binds.conf" = lib.mkIf (desktop.noctalia.compositor == "hyprland") {
-      source = ./config/hypr/binds.conf;
-    };
-    xdg.configFile."hypr/common.conf" = lib.mkIf (desktop.noctalia.compositor == "hyprland") {
-      source = ./config/hypr/common.conf;
-    };
-    xdg.configFile."hypr/env.conf" = lib.mkIf (desktop.noctalia.compositor == "hyprland") {
-      source = ./config/hypr/env.conf;
-    };
-    xdg.configFile."hypr/input.conf" = lib.mkIf (desktop.noctalia.compositor == "hyprland") {
-      source = ./config/hypr/input.conf;
-    };
-    xdg.configFile."hypr/laf.conf" = lib.mkIf (desktop.noctalia.compositor == "hyprland") {
-      source = ./config/hypr/laf.conf;
-    };
-    xdg.configFile."hypr/permissions.conf" = lib.mkIf (desktop.noctalia.compositor == "hyprland") {
-      source = ./config/hypr/permissions.conf;
-    };
-    xdg.configFile."hypr/rules.conf" = lib.mkIf (desktop.noctalia.compositor == "hyprland") {
-      source = ./config/hypr/rules.conf;
-    };
-    xdg.configFile."hypr/rules-ghostty.conf" = lib.mkIf (desktop.noctalia.compositor == "hyprland" && config.programs.ghostty.enable) {
-      source = ./config/hypr/rules-ghostty.conf;
-    };
-    xdg.configFile."hypr/rules-wezterm.conf" = lib.mkIf (desktop.noctalia.compositor == "hyprland" && config.programs.wezterm.enable) {
-      source = ./config/hypr/rules-wezterm.conf;
-    };
-
-    xdg.configFile."niri/animations.kdl" = lib.mkIf (desktop.noctalia.compositor == "niri") {
-      source = ./config/niri/animations.kdl;
-    };
-    xdg.configFile."niri/config.kdl" = lib.mkIf (desktop.noctalia.compositor == "niri") {
-      source = ./config/niri/config.kdl;
-    };
-    xdg.configFile."niri/binds.kdl" = lib.mkIf (desktop.noctalia.compositor == "niri") {
-      source = (
-        if (desktop.noctalia.package == pkgs.noctalia-shell) then
-          ./config/niri/binds-noctalia-4.kdl
-        else
-          ./config/niri/binds-noctalia-5.kdl
-      );
-    };
-    xdg.configFile."niri/input.kdl" = lib.mkIf (desktop.noctalia.compositor == "niri") {
-      source = ./config/niri/input.kdl;
-    };
-    xdg.configFile."niri/output.kdl" = lib.mkIf (desktop.noctalia.compositor == "niri") {
-      source = ./config/niri/output.kdl;
-    };
-    xdg.configFile."niri/layer-rule.kdl" = lib.mkIf (desktop.noctalia.compositor == "niri") {
-      source = (
-        if (desktop.noctalia.package == pkgs.noctalia-shell) then
-          ./config/niri/layer-rule-noctalia-4.kdl
-        else
-          ./config/niri/layer-rule-noctalia-5.kdl
-      );
-    };
-    xdg.configFile."niri/layout.kdl" = lib.mkIf (desktop.noctalia.compositor == "niri") {
-      source = ./config/niri/layout.kdl;
-    };
-    xdg.configFile."niri/spawn-at-startup.kdl" = lib.mkIf (desktop.noctalia.compositor == "niri") {
-      source = (
-        if (desktop.noctalia.package == pkgs.noctalia-shell) then
-          ./config/niri/spawn-at-startup-noctalia-4.kdl
-        else
-          ./config/niri/spawn-at-startup-noctalia-5.kdl
-      );
-    };
-    xdg.configFile."niri/window-rule.kdl" = lib.mkIf (desktop.noctalia.compositor == "niri") {
-      source = ./config/niri/window-rule.kdl;
-    };
-    xdg.configFile."niri/workspace.kdl" = lib.mkIf (desktop.noctalia.compositor == "niri") {
-      source = ./config/niri/workspace.kdl;
     };
 
     services.flameshot = lib.mkIf (desktop.noctalia.compositor == "hyprland") {

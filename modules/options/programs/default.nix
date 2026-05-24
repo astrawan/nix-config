@@ -9,10 +9,12 @@
     ./folio.nix
     ./fragments.nix
     ./ghostty.nix
+    ./hyprland.nix
     ./jellyfin-tui.nix
     ./keystore-explorer.nix
     ./lazygit.nix
     ./librewolf.nix
+    ./niri.nix
     ./omniwm.nix
     ./qbittorrent.nix
     ./tmux.nix
