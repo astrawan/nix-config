@@ -2,14 +2,12 @@
   description = "DevLive Nix Configurations";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-25.11";
-    nixos-wsl.url = "github:nix-community/NixOS-WSL/release-25.11";
-    nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
+    nixpkgs.url = "nixpkgs/nixos-26.05";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+    nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
-    home-manager.url = "github:nix-community/home-manager/release-25.11";
+    home-manager.url = "github:nix-community/home-manager/release-26.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    niri.url = "github:niri-wm/niri/8ed0da44d974c32c6877d2f4630c314da0717ecb";
-    niri.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     noctalia.url = "github:noctalia-dev/noctalia-shell";
@@ -20,7 +18,7 @@
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, nixos-wsl, home-manager, niri, nix-darwin, sops-nix, noctalia, noctalia5, zen-browser, ... }:
+  outputs = { nixpkgs, nixos-wsl, home-manager, nix-darwin, sops-nix, noctalia, noctalia5, zen-browser, ... }:
     let
       lib = nixpkgs.lib;
       darwinSystem = "aarch64-darwin";
@@ -30,7 +28,6 @@
         pandorabox = lib.nixosSystem {
           system = linuxSystem;
           modules = [
-            { nixpkgs.overlays = [ niri.overlays.default ]; }
             ({ ... }: {
               imports = [
                 ./overlays/workstation.nix
@@ -45,7 +42,6 @@
         pandorabox-v2 = lib.nixosSystem {
           system = linuxSystem;
           modules = [
-            { nixpkgs.overlays = [ niri.overlays.default ]; }
             ({ ... }: {
               imports = [
                 ./overlays/workstation.nix

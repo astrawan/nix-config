@@ -20,7 +20,7 @@ in
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
-  home.stateVersion = "25.11"; # Please read the comment before changing.
+  home.stateVersion = "26.05"; # Please read the comment before changing.
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -84,48 +84,36 @@ in
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    matchBlocks = {
+    settings = {
       "localhost.1" = {
         hostname = "localhost";
         port = 8101;
-        extraOptions = {
-          HostKeyAlgorithms = "+ssh-rsa";
-        };
+        HostKeyAlgorithms = "+ssh-rsa";
       };
       "localhost.2" = {
         hostname = "localhost";
         port = 8102;
-        extraOptions = {
-          HostKeyAlgorithms = "+ssh-rsa";
-        };
+        HostKeyAlgorithms = "+ssh-rsa";
       };
       "localhost.3" = {
         hostname = "localhost";
         port = 8103;
-        extraOptions = {
-          HostKeyAlgorithms = "+ssh-rsa";
-        };
+        HostKeyAlgorithms = "+ssh-rsa";
       };
       "localhost.4" = {
         hostname = "localhost";
         port = 8104;
-        extraOptions = {
-          HostKeyAlgorithms = "+ssh-rsa";
-        };
+        HostKeyAlgorithms = "+ssh-rsa";
       };
       "localhost.5" = {
         hostname = "localhost";
         port = 8105;
-        extraOptions = {
-          HostKeyAlgorithms = "+ssh-rsa";
-        };
+        HostKeyAlgorithms = "+ssh-rsa";
       };
       "localhost.6" = {
         hostname = "localhost";
         port = 8106;
-        extraOptions = {
-          HostKeyAlgorithms = "+ssh-rsa";
-        };
+        HostKeyAlgorithms = "+ssh-rsa";
       };
     };
   };

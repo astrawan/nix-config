@@ -15,7 +15,10 @@ in
 
     programs.fd.enable = true;
     programs.fzf.enable = true;
-    programs.neovim.enable = true;
+    programs.neovim = {
+      enable = true;
+      sideloadInitLua = true;
+    };
     programs.ripgrep.enable = true;
 
     devlive.programs.lazygit.enable = true;

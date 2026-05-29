@@ -52,14 +52,14 @@
       device = "/dev/disk/by-uuid/b5c1c4d8-dab8-4404-985f-d7034a08afb5";
     }
   ];
-  systemd.sleep.extraConfig = ''
-    AllowSuspend=yes
-    AllowHibernation=yes
-    AllowHybridSleep=no
-    AllowSuspendThenHibernate=no
-    MemorySleepMode=deep
-    SuspendState=freeze
-  '';
+  systemd.sleep.settings.Sleep = {
+    AllowSuspend = "yes";
+    AllowHibernation = "yes";
+    AllowHybridSleep = "no";
+    AllowSuspendThenHibernate = "no";
+    MemorySleepMode = "deep";
+    SuspendState = "freeze";
+  };
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
