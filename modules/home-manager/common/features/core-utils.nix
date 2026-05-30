@@ -14,7 +14,12 @@ in
       wget
     ];
 
-    programs.starship.enable = true;
+    programs.starship = {
+      enable = true;
+      settings = {
+        scan_timeout = 2000;
+      };
+    };
 
     devlive.programs.zellij.enable = true;
   };

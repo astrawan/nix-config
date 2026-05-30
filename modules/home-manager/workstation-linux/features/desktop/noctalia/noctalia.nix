@@ -369,11 +369,6 @@ in
               "kcolorscheme"
               "qt"
             ] ++(
-              if (config.programs.starship.enable) then
-                [ "starship" ]
-              else
-                []
-            ) ++(
               if (config.programs.wezterm.enable) then
                 [ "wezterm" ]
               else
