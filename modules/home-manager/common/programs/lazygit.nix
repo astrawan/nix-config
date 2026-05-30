@@ -8,7 +8,10 @@ in
     programs.lazygit = {
       enable = true;
       settings = {
-        git.overrideGpg = true;
+        git = {
+          autoFetch = false;
+          overrideGpg = true;
+        };
         gui.theme = {
           lightTheme = false;
         };
