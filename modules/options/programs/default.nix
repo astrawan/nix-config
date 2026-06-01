@@ -9,6 +9,7 @@
     ./folio.nix
     ./fragments.nix
     ./ghostty.nix
+    ./helium.nix
     ./hyprland.nix
     ./jellyfin-tui.nix
     ./keystore-explorer.nix

@@ -6,6 +6,8 @@
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    helium-browser.url = "github:oxcl/nix-flake-helium-browser";
+    helium-browser.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager/release-26.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.url = "github:Mic92/sops-nix";
@@ -18,7 +20,7 @@
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, nixos-wsl, home-manager, nix-darwin, sops-nix, noctalia, noctalia5, zen-browser, ... }:
+  outputs = { nixpkgs, nixos-wsl, helium-browser, home-manager, nix-darwin, sops-nix, noctalia, noctalia5, zen-browser, ... }:
     let
       lib = nixpkgs.lib;
       darwinSystem = "aarch64-darwin";
@@ -111,6 +113,7 @@
             sops-nix.homeManagerModules.sops
             ({ ... }: {
               imports = [
+                helium-browser.homeModules.default
                 noctalia.homeModules.default
                 zen-browser.homeModules.beta
                 ./overlays/workstation.nix
