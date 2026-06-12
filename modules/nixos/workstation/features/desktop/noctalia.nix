@@ -5,7 +5,9 @@ let
 in
 {
   config = lib.mkIf (desktop.type == "noctalia") {
-    environment.systemPackages = desktop.extraPackages ++desktop.noctalia.extraPackages;
+    environment.systemPackages = with pkgs; [
+      tuigreet
+    ] ++desktop.extraPackages ++desktop.noctalia.extraPackages;
     environment.variables = {
       MOZ_ENABLE_WAYLAND = "1";
       NIXOS_OZONE_WL = "1";
@@ -24,27 +26,22 @@ in
       enable = true;
       user = "${config.devlive.user.name}";
     };
-    services.displayManager.sddm = {
+
+    services.greetd = {
       enable = true;
-      extraPackages = with pkgs; [
-        sddm-noctalia
-      ];
-      package = pkgs.kdePackages.sddm;
       settings = {
-        Autologin = {
-          Session = "${desktop.noctalia.compositor}.desktop";
+        default_session = {
+          command = "${pkgs.tuigreet}/bin/tuigreet --cmd niri-session";
+          user = "${config.devlive.user.name}";
         };
-        General = {
-          DefaultSession = "${desktop.noctalia.compositor}.desktop";
-          DisplayServer = "wayland";
-        };
-        Theme = {
-          ThemeDir = "${pkgs.sddm-noctalia}/share/sddm/themes";
+        initial_session = {
+          command = "${pkgs.tuigreet}/bin/tuigreet --cmd niri-session";
+          user = "${config.devlive.user.name}";
         };
       };
-      theme = "noctalia";
-      wayland.enable = true;
+      useTextGreeter = true;
     };
+
     security.polkit = lib.mkIf (desktop.noctalia.compositor == "niri") {
       enable = true;
     };
