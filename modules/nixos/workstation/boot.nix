@@ -23,17 +23,23 @@
       "net.ipv4.ip_forward" = 0;
     };
     boot.kernelParams = [
-      "quiet"
-      "splash"
       "boot.shell_on_fail"
       "udev.log_priority=3"
       "rd.systemd.show_status=auto"
-    ];
+    ] ++ (
+      if (config.devlive.boot.plymouth.enable) then
+        [
+          "quiet"
+          "splash"
+        ]
+      else
+        [ ]
+    );
     boot.blacklistedKernelModules = [ "mmc_block" ];
-      boot.plymouth = {
-        enable = true;
-        theme = "bgrt";
-      };
+    boot.plymouth = lib.mkIf(config.devlive.boot.plymouth.enable) {
+      enable = true;
+      theme = "bgrt";
+    };
 
     # boot.loader.timeout = 0;
   };
