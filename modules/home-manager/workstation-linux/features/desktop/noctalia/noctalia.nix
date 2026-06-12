@@ -268,16 +268,18 @@ in
     home.file.".config/noctalia/settings.toml" = lib.mkIf (desktop.noctalia.package == pkgs.noctalia-shell-5) {
       source = (pkgs.formats.toml {}).generate "noctalia-shell-5-settings.toml" {
         bar.default = {
-          background_opacity = 1.0;
+          background_opacity = 0.8;
           center = [
             "cpu"
             "temp"
             "ram"
+            "network_rx"
+            "network_tx"
           ];
-          margin_edge = 0;
-          margin_ends = 0;
+          margin_edge = 16;
+          margin_ends = 16;
           position = "left";
-          radius = 0;
+          radius = 18;
           shadow = true;
           start = [
             "launcher"
@@ -290,14 +292,10 @@ in
           widget_spacing = 8;
         };
 
-        control_center = {
-          compact = false;
-        };
-
         dock = {
           auto_hide = true;
           background_opacity = 1.0;
-          enabled = true;
+          enabled = false;
         };
 
         idle = {
@@ -326,12 +324,17 @@ in
           };
         };
 
+        lockscreen_widgets = {
+          enabled = false;
+        };
+
         notification = {
-          background_opacity = 1.0;
+          background_opacity = 0.8;
           position = "bottom_left";
         };
 
         osd = {
+          background_opacity = 0.8;
           lock_keys = false;
           position = "top_center";
         };
