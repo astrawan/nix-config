@@ -20,6 +20,7 @@ in
       python3
       cliphist
       wl-clipboard
+      wl-mirror
     ] ++desktop.extraHomePackages ++desktop.noctalia.extraHomePackages ++(
       if desktop.noctalia.package == pkgs.noctalia-shell-5 then
         [ desktop.noctalia.package ]
@@ -195,6 +196,7 @@ in
           predefinedScheme = "Noctalia (default)";
         };
         dock = {
+          enabled = false;
           backgroundOpacity = 0.8;
         };
         general = {
@@ -330,13 +332,16 @@ in
 
         notification = {
           background_opacity = 0.8;
+          offset_y = 16;
           position = "bottom_left";
         };
 
         osd = {
           background_opacity = 0.8;
           lock_keys = false;
-          position = "top_center";
+          offset_y = 16;
+          orientation = "vertical";
+          position = "bottom_left";
         };
 
         shell = {
