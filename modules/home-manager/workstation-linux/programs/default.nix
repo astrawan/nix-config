@@ -7,6 +7,7 @@
     ./folio.nix
     ./fragments.nix
     ./ghostty.nix
+    ./helium.nix
     ./hyprland.nix
     ./keystore-explorer.nix
     ./librewolf.nix

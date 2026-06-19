@@ -70,6 +70,5 @@
 
     devlive.programs.eza.enable = true;
     devlive.programs.yazi.enable = true;
-    devlive.programs.zathura.enable = true;
   };
 }

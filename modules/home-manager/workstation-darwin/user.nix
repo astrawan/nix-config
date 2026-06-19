@@ -4,7 +4,7 @@ let
   user = config.devlive.user;
 in
 {
-  import = [
+  imports = [
     ../common/user.nix
   ];
 
