@@ -26,6 +26,14 @@ in
         [ desktop.noctalia.package ]
       else
         []
+    ) ++(
+      if desktop.noctalia.compositor == "niri" then
+        [
+          pkgs.xdg-desktop-portal-gnome
+          pkgs.nautilus
+        ]
+      else
+        [ ]
     );
     home.file.".config/qt6ct/qt6ct.conf".text = lib.generators.toINI {} {
       Appearance = {
@@ -48,6 +56,9 @@ in
         fixed = ''"FiraCode Nerd Font Mono Med,11,-1,5,50,0,0,0,0,0,Regular"'';
         general = ''"DejaVu Sans,11,-1,5,50,0,0,0,0,0,Regular"'';
       };
+    };
+    home.file.".config/systemd/user/xdg-desktop-portal-gnome.service" = lib.mkIf (desktop.noctalia.compositor == "niri") {
+      source = "${pkgs.xdg-desktop-portal-gnome}/share/systemd/user/xdg-desktop-portal-gnome.service";
     };
     devlive.programs.eza.enable = true;
     devlive.programs.niri = lib.mkIf (desktop.noctalia.compositor == "niri") {
@@ -473,6 +484,9 @@ in
       tray = "always";
     };
     services.gpg-agent.pinentry.package = pkgs.pinentry-gnome3;
+    services.polkit-gnome = lib.mkIf (desktop.noctalia.compositor == "niri") {
+      enable = true;
+    };
 
     dconf.settings."org/gnome/desktop/interface".gtk-theme = "adw-gtk3";
     dconf.settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
