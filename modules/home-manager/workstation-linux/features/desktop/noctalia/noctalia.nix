@@ -365,12 +365,12 @@ in
             attach_launcher = false;
             attach_session = false;
             attach_wallpaper = false;
-            clipboard_placement = "attached";
-            control_center_placement = "attached";
-            launcher_placement = "attached";
-            session_placement = "attached";
-            transparency_mode = "solid";
-            wallpaper_placement = "attached";
+            clipboard_placement = "floating";
+            control_center_placement = "floating";
+            launcher_placement = "floating";
+            session_placement = "floating";
+            transparency_mode = "soft";
+            wallpaper_placement = "floating";
           };
 
           screen_corners = {
