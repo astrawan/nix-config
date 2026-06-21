@@ -35,6 +35,14 @@ in
       else
         [ ]
     );
+    home.pointerCursor = {
+      enable = true;
+      gtk.enable = true;
+      x11.enable = true;
+      package = pkgs.apple-cursor;
+      name = "macOS";
+      size = 32;
+    };
     home.file.".config/qt6ct/qt6ct.conf".text = lib.generators.toINI {} {
       Appearance = {
         color_scheme_path = "${config.xdg.configHome}/qt6ct/colors/noctalia.conf";
@@ -307,8 +315,9 @@ in
 
         dock = {
           auto_hide = true;
-          background_opacity = 1.0;
-          enabled = false;
+          background_opacity = 0.8;
+          enabled = true;
+          reserve_space = false;
         };
 
         idle = {
@@ -351,8 +360,8 @@ in
           background_opacity = 0.8;
           lock_keys = false;
           offset_y = 16;
-          orientation = "vertical";
-          position = "bottom_left";
+          orientation = "horizontal";
+          position = "top_center";
         };
 
         shell = {
