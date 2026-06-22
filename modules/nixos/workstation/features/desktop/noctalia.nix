@@ -29,15 +29,12 @@ in
 
     services.greetd = {
       enable = true;
-      settings = {
-        default_session = {
-          command = "${pkgs.tuigreet}/bin/tuigreet --cmd niri-session";
-          user = "${config.devlive.user.name}";
-        };
+      settings = rec {
         initial_session = {
-          command = "${pkgs.tuigreet}/bin/tuigreet --cmd niri-session";
+          command = "${pkgs.niri}/bin/niri-session";
           user = "${config.devlive.user.name}";
         };
+        default_session = initial_session;
       };
       useTextGreeter = true;
     };
