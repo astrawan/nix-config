@@ -38,6 +38,11 @@ in
       };
       useTextGreeter = true;
     };
+    systemd.services.greetd = lib.mkIf (config.services.greetd.enable) {
+      unitConfig.After = [
+        "multi-user.target"
+      ];
+    };
 
     security.polkit = lib.mkIf (desktop.noctalia.compositor == "niri") {
       enable = true;
