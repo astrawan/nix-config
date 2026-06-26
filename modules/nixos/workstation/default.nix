@@ -7,6 +7,7 @@
     ./programs
     ./security
     ./services
+    ./systemd.nix
     ./virtualisation
     ./boot.nix
     ./networking.nix
