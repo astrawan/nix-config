@@ -466,7 +466,7 @@ in
     };
     # Enable zen browser transparency and custom layout
     programs.zen-browser.profiles.default.settings = lib.mkIf config.devlive.programs.zen-browser.enable {
-      "browser.tabs.inTitlebar" = if (desktop.noctalia.compositor == "hyprland") then 0 else 2;
+      "browser.tabs.inTitlebar" = 0;
       "zen.view.compact.hide-tabbar" = true;
       "zen.view.compact.hide-toolbar" = false;
       "zen.view.grey-out-inactive-windows" = false;
