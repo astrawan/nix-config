@@ -47,6 +47,8 @@
       HandlePowerKeyLongPress = "poweroff";
     };
   };
+  # prevents overheating on Intel CPUs
+  services.thermald.enable = true;
   swapDevices = [
     {
       device = "/dev/disk/by-uuid/b5c1c4d8-dab8-4404-985f-d7034a08afb5";
