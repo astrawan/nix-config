@@ -32,10 +32,16 @@
     };
 
   # enable hibernate
-  boot.kernelParams = ["mem_sleep_default=deep"];
+  boot.kernelParams = [
+    "mem_sleep_default=deep"
+    "intel_pstate=active"    # Better CPU power management
+    "i915.enable_fbc=1"      # Frame buffer compression for Intel graphics
+    "i915.enable_psr=1"      # Panel self refresh for better battery
+  ];
   powerManagement = {
     enable = true;
     powertop.enable = true;
+    cpuFreqGovernor = "schedutil";
   };
   services.power-profiles-daemon.enable = true;
   services.logind = {
