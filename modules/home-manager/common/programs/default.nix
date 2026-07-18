@@ -2,6 +2,7 @@
   imports = [
     ./bash.nix
     ./brave.nix
+    ./discord.nix
     ./eza.nix
     ./fish.nix
     ./jellyfin-tui.nix
@@ -11,6 +12,7 @@
     ./wezterm.nix
     ./yazi.nix
     ./zathura.nix
+    ./zed-editor.nix
     ./zellij.nix
     ./zen-browser.nix
   ];

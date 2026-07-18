@@ -4,6 +4,7 @@
     ./bash.nix
     ./brave.nix
     ./deja-dup.nix
+    ./discord.nix
     ./eza.nix
     ./fish.nix
     ./folio.nix
@@ -24,6 +25,7 @@
     ./wezterm.nix
     ./yazi.nix
     ./zathura.nix
+    ./zed-editor.nix
     ./zellij.nix
     ./zen-browser.nix
   ];
