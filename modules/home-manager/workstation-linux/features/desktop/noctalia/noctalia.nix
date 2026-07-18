@@ -16,16 +16,15 @@ in
       kdePackages.qt6ct
       libsForQt5.qt5ct
       networkmanagerapplet
-      # noctalia schema installation
-      python3
       cliphist
       wl-clipboard
+      wl-screenrec
       wl-mirror
     ] ++desktop.extraHomePackages ++desktop.noctalia.extraHomePackages ++(
       if desktop.noctalia.package == pkgs.noctalia-shell-5 then
         [ desktop.noctalia.package ]
       else
-        []
+        [ python3 ]
     ) ++(
       if desktop.noctalia.compositor == "niri" then
         [
