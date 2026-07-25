@@ -1,6 +1,6 @@
 binds {
     Mod+A                          hotkey-overlay-title="Open Launcher"                              { spawn-sh "noctalia msg panel-toggle launcher";                     }
-    Mod+B                          hotkey-overlay-title="Show/Hide Bar"                              { spawn-sh "noctalia msg bar-toggle launcher";                       }
+    Mod+B                          hotkey-overlay-title="Show/Hide Bar"                              { spawn-sh "noctalia msg bar-toggle";                                }
     Super+C                                                                                          { close-window;                                                      }
     Mod+Shift+C                    hotkey-overlay-title="Show Control Center"                        { spawn-sh "noctalia msg panel-toggle control-center";               }
     Mod+Shift+D                    hotkey-overlay-title="Show Calendar"                              { spawn-sh "noctalia msg panel-toggle control-center calendar";      }
@@ -82,7 +82,7 @@ binds {
     Mod+Ctrl+Right                                                                                   { focus-monitor-right;                                               }
 
     Ctrl+Alt+Delete                hotkey-overlay-title="Show Session Menu"                          { spawn-sh "noctalia msg panel-toggle session";                      }
-    Ctrl+Alt+L                     hotkey-overlay-title="Lock Screen"                                { spawn-sh "noctalia msg screen-lock";                               }
+    Ctrl+Alt+L                     hotkey-overlay-title="Lock Screen"                                { spawn-sh "noctalia msg session lock";                               }
 
     XF86AudioRaiseVolume           hotkey-overlay-title="Increase Volume" allow-when-locked=true     { spawn-sh "noctalia msg volume-up";                                 }
     XF86AudioLowerVolume           hotkey-overlay-title="Decrease Volume" allow-when-locked=true     { spawn-sh "noctalia msg volume-down";                               }
