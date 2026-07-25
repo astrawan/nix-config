@@ -20,8 +20,8 @@ layout {
       on
       draw-behind-window false
       offset x=0 y=0
-      softness 5
-      spread 1
+      softness 10 
+      spread 6
     }
 
     // Set gaps around windows in logical pixels.
