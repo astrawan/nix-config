@@ -289,6 +289,7 @@ in
       source = (pkgs.formats.toml {}).generate "noctalia-shell-5-settings.toml" {
         bar.default = {
           background_opacity = 0.8;
+          border_width = 1.0;
           center = [
             "cpu"
             "temp"
@@ -296,11 +297,13 @@ in
             "network_rx"
             "network_tx"
           ];
-          margin_edge = 16;
+          concave_edge_corners = false;
+          margin_edge = 0;
           margin_ends = 16;
           position = "left";
           radius = 18;
-          shadow = true;
+          radius_bottom_left = 0;
+          radius_top_left = 0;
           start = [
             "launcher"
             "clock"
@@ -310,13 +313,37 @@ in
           ];
           thickness = 48;
           widget_spacing = 8;
+          monitor."HDMI-A-1".enabled = false;
+        };
+
+        battery = {
+          warning_threshold = 20;
+        };
+
+        calendar = {
+          enabled = true;
+          account.personal_google = {
+            type = "google";
+          };
+        };
+
+        control_center = {
+          sidebar = "full";
+          sidebar_section = "full";
         };
 
         dock = {
-          auto_hide = true;
+          auto_hide = false;
           background_opacity = 0.8;
+          border_width = 1.0;
+          concave_edge_corners = false;
           enabled = true;
+          margin_edge = 16;
+          monitors = [ "eDP-1" ];
+          position = "right";
           reserve_space = false;
+          show_dots = true;
+          smart_auto_hide = true;
         };
 
         idle = {
@@ -345,12 +372,14 @@ in
           };
         };
 
-        lockscreen_widgets = {
-          enabled = false;
+        lockscreen = {
+          fingerprint = false;
+          monitors = [ "eDP-1" ];
         };
 
         notification = {
           background_opacity = 0.8;
+          monitors = [ "eDP-1" ];
           offset_y = 16;
           position = "bottom_left";
         };
@@ -358,6 +387,7 @@ in
         osd = {
           background_opacity = 0.8;
           lock_keys = false;
+          monitors = [ "eDP-1" ];
           offset_y = 16;
           orientation = "horizontal";
           position = "top_center";
@@ -365,7 +395,6 @@ in
 
         shell = {
           font_family = "Adwaita Mono";
-          telemetry_enabled = false;
 
           panel = {
             attach_clipboard = false;
@@ -373,21 +402,26 @@ in
             attach_launcher = false;
             attach_session = false;
             attach_wallpaper = false;
-            clipboard_placement = "floating";
+            clipboard_placement = "auto";
             control_center_placement = "floating";
-            launcher_placement = "floating";
+            floating_offset = 16;
+            launcher_position = "auto";
+            polkit_position = "auto";
             session_placement = "floating";
             transparency_mode = "soft";
             wallpaper_placement = "floating";
           };
 
-          screen_corners = {
-            enabled = false;
+          shadow = {
+            alpha = 1.0;
+            direction = "center";
           };
         };
 
         theme = {
+          mode = "dark";
           source = "wallpaper";
+          wallpaper_scheme = "m3-content";
 
           templates = {
             builtin_ids = [
@@ -428,6 +462,11 @@ in
                 [ "zathura" ]
               else
                 []
+            ) ++(
+              if (config.devlive.programs.zed-editor.enable) then
+                [ "zed" ]
+              else
+                []
             );
           };
         };
@@ -445,10 +484,19 @@ in
         };
 
         widget = {
+          control-center = {
+            glyph = "snowflake";
+          };
           cpu = {
             show_label = false;
           };
           network = {
+            show_label = false;
+          };
+          network_rx = {
+            show_label = false;
+          };
+          network_tx = {
             show_label = false;
           };
           ram = {
@@ -457,8 +505,8 @@ in
           temp = {
             show_label = false;
           };
-          control-center = {
-            glyph = "snowflake";
+          workspaces = {
+            capsule_padding = 8.0;
           };
         };
       };
