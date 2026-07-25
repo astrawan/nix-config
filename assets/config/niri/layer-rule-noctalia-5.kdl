@@ -7,13 +7,9 @@ layer-rule {
 /* Noctalia: blur everywhere without xray for a better look */
 layer-rule {
   // run `niri msg layers` to view available layers
-  match namespace="^noctalia-(bar-[^\"]+|osd|notification|panel)$"
+  match namespace="^noctalia-(attached-panel|bar-[^\"]+|dock|notification|osd|panel)$"
   // https://niri-wm.github.io/niri/Configuration%3A-Layer-Rules.html#background-effect
   background-effect {
-    blur true
     xray false
-    noise 0.05
-    saturation 2.6
   }
 }
-
