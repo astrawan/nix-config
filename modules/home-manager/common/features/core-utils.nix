@@ -9,8 +9,9 @@ in
       dig
       jaq
       p7zip-rar
+      rustnet
       tcpdump
-      unzip
+      trippy
       wget
     ];
 
