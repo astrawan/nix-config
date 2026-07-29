@@ -7,6 +7,7 @@ in
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       ast-grep
+      nil
       tree-sitter
     ]
     ++(if (config.devlive.features.desktop.type != null || config.devlive.host.system == "darwin") then [
