@@ -10,6 +10,7 @@ layout {
     // https://yalter.github.io/niri/Configuration%3A-Layout.html#focus-ring-and-border
     border {
       on
+      width 2
     }
     focus-ring {
       off
