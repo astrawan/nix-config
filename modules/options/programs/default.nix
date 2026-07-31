@@ -17,6 +17,7 @@
     ./lazygit.nix
     ./librewolf.nix
     ./niri.nix
+    ./notema.nix
     ./omniwm.nix
     ./qbittorrent.nix
     ./tmux.nix

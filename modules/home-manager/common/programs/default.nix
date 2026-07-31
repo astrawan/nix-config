@@ -7,6 +7,7 @@
     ./fish.nix
     ./jellyfin-tui.nix
     ./lazygit.nix
+    ./notema.nix
     ./tmux.nix
     ./vscode.nix
     ./wezterm.nix

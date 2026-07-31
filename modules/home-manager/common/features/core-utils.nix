@@ -13,6 +13,7 @@ in
     home.packages = with pkgs; [
       dig
       jaq
+      notema
       p7zip-rar
       rustnet
       tcpdump
