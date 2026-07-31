@@ -1,8 +1,8 @@
-{ config, lib, pkgs, ... }:
+{
+  lib,
+  ...
+}:
 
-let 
-  cfg = config.devlive.features.devel-utils;
-in
 {
   options.devlive.features.devel-utils = {
     enable = lib.mkEnableOption "devel-utils";

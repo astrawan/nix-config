@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   desktop = config.devlive.features.desktop;
@@ -9,7 +14,8 @@ in
       gnomeExtensions.dash-to-dock
     ];
 
-    home.file.".local/share/icons/Adwaita/symbolic/actions/view-app-grid-symbolic.svg".source = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake-white.svg";
+    home.file.".local/share/icons/Adwaita/symbolic/actions/view-app-grid-symbolic.svg".source =
+      "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake-white.svg";
 
     dconf.settings."org/gnome/shell/extensions/dash-to-dock" = {
       background-color = "rgb(0,0,0)";

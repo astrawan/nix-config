@@ -1,8 +1,5 @@
-{ config, lib, ... }:
+{ lib, ... }:
 
-let 
-  cfg = config.devlive.programs.folio;
-in
 {
   options.devlive.programs.folio = {
     enable = lib.mkEnableOption "folio";

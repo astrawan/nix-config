@@ -2,7 +2,7 @@
 
 let
   cfg = config.devlive.services.tailscale;
-in 
+in
 {
   config = lib.mkIf cfg.enable {
     services.tailscale = {

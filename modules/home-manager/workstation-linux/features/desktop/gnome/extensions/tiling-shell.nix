@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   desktop = config.devlive.features.desktop;
@@ -264,7 +269,7 @@ in
         ]
       '';
       show-indicator = false;
-      untile-window = ["<Control>Return"];
+      untile-window = [ "<Control>Return" ];
     };
   };
 }

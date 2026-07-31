@@ -1,8 +1,8 @@
-{ config, lib, pkgs, ... }:
+{
+  lib,
+  ...
+}:
 
-let
-  cfg = config.devlive.services.flatpak;
-in 
 {
   options.devlive.services.flatpak = {
     enable = lib.mkEnableOption "flatpak";

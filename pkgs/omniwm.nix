@@ -3,7 +3,6 @@
   gitUpdater,
   lib,
   stdenv,
-  versionCheckHook,
 }:
 
 let

@@ -3,7 +3,7 @@
 {
   config = {
     systemd.user.extraConfig = ''
-        DefaultLimitNOFILE=65536:524288
+      DefaultLimitNOFILE=65536:524288
     '';
   };
 }

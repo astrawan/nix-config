@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.devlive.features.desktop;
@@ -6,14 +11,18 @@ in
 {
   config = {
     home.file = {
-      "${config.home.homeDirectory}/.local/bin/devlive-desktop-terminal".source = "${config.devlive.features.desktop.defaultTerminalEmulator}/bin/${config.devlive.features.desktop.defaultTerminalEmulator.meta.mainProgram}";
+      "${config.home.homeDirectory}/.local/bin/devlive-desktop-terminal".source =
+        "${config.devlive.features.desktop.defaultTerminalEmulator}/bin/${config.devlive.features.desktop.defaultTerminalEmulator.meta.mainProgram}";
     };
     home.sessionPath = [ "$HOME/.local/bin" ];
 
-    home.packages = lib.mkIf(cfg.enableTelegram) (with pkgs; [
-      telegram-desktop
-    ]);
-    programs.zapzap = lib.mkIf(cfg.enableWhatsApp) {
+    home.packages = lib.mkIf (cfg.enableTelegram) (
+      with pkgs;
+      [
+        telegram-desktop
+      ]
+    );
+    programs.zapzap = lib.mkIf (cfg.enableWhatsApp) {
       enable = true;
       settings = {
         notification = {

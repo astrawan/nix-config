@@ -1,14 +1,18 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  ...
+}:
 
 let
   cfg = config.devlive.security.auditd;
-in 
+in
 {
   config = lib.mkIf cfg.enable {
     security.auditd.enable = true;
     security.audit = {
       enable = true;
-      rules = [];
+      rules = [ ];
     };
   };
 }

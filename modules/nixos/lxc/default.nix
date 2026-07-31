@@ -21,9 +21,9 @@ in
       enable = true;
       openFirewall = true;
       settings = {
-          PermitRootLogin = "yes";
-          PasswordAuthentication = true;
-          PermitEmptyPasswords = "yes";
+        PermitRootLogin = "yes";
+        PasswordAuthentication = true;
+        PermitEmptyPasswords = "yes";
       };
     };
     # Cache DNS lookups to improve performance

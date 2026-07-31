@@ -1,8 +1,13 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.devlive.services.flatpak;
-in 
+in
 {
   config = lib.mkIf cfg.enable {
     # Enable flatpak
@@ -16,4 +21,3 @@ in
     };
   };
 }
-

@@ -2,7 +2,7 @@
 
 let
   cfg = config.devlive.user;
-in 
+in
 {
   options.devlive.user = {
     id = lib.mkOption {
@@ -24,9 +24,13 @@ in
         id = lib.mkOption {
           type = with lib.types; nullOr str;
           readOnly = true;
-          default = if (cfg.gpg.publicKey.fingerprint != null) then
-            (builtins.substring 24 (builtins.stringLength cfg.gpg.publicKey.fingerprint - 24) cfg.gpg.publicKey.fingerprint)
-          else null;
+          default =
+            if (cfg.gpg.publicKey.fingerprint != null) then
+              (builtins.substring 24 (
+                builtins.stringLength cfg.gpg.publicKey.fingerprint - 24
+              ) cfg.gpg.publicKey.fingerprint)
+            else
+              null;
         };
       };
       sshKeys = lib.mkOption {

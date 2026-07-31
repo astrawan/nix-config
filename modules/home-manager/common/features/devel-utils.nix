@@ -1,18 +1,30 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
-let 
+let
   cfg = config.devlive.features.devel-utils;
 in
 {
   config = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [
-      ast-grep
-      nil
-      tree-sitter
-    ]
-    ++(if (config.devlive.features.desktop.type != null || config.devlive.host.system == "darwin") then [
-        pkgs.dbeaver-bin
-    ] else [ ]);
+    home.packages =
+      with pkgs;
+      [
+        ast-grep
+        nil
+        tree-sitter
+      ]
+      ++ (
+        if (config.devlive.features.desktop.type != null || config.devlive.host.system == "darwin") then
+          [
+            pkgs.dbeaver-bin
+          ]
+        else
+          [ ]
+      );
 
     programs.fd.enable = true;
     programs.fzf.enable = true;

@@ -1,7 +1,6 @@
-{ config, lib, ... }:
+{ lib, ... }:
 
 let
-  cfg = config.devlive.programs.wezterm;
   settings = {
     options = {
       color_scheme = lib.mkOption {

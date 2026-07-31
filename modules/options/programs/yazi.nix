@@ -1,8 +1,5 @@
-{ config, lib, ... }:
+{ lib, ... }:
 
-let
-  cfg = config.devlive.programs.yazi;
-in
 {
   options.devlive.programs.yazi = {
     enable = lib.mkEnableOption "yazi";
@@ -11,10 +8,12 @@ in
       default = [ ];
     };
     plugins = lib.mkOption {
-      type = with lib.types; attrsOf (oneOf [
-        path
-        package
-      ]);
+      type =
+        with lib.types;
+        attrsOf (oneOf [
+          path
+          package
+        ]);
       default = { };
     };
   };

@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.devlive.programs.zen-browser;
@@ -55,6 +60,11 @@ in
             icon = "circle";
             id = 9;
           };
+          "Dev-6" = {
+            color = "red";
+            icon = "circle";
+            id = 10;
+          };
         };
         search = {
           force = true; # Needed for nix to overwrite search settings on rebuild
@@ -75,7 +85,7 @@ in
               ];
 
               icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-              definedAliases = ["@snx"]; # Keep in mind that aliases defined here only work if they start with "@"
+              definedAliases = [ "@snx" ]; # Keep in mind that aliases defined here only work if they start with "@"
             };
             # My NixOS Option and package search shortcut
             mynixos = {
@@ -93,7 +103,7 @@ in
               ];
 
               icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-              definedAliases = ["@mnx"]; # Keep in mind that aliases defined here only work if they start with "@"
+              definedAliases = [ "@mnx" ]; # Keep in mind that aliases defined here only work if they start with "@"
             };
           };
         };

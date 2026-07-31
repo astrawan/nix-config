@@ -1,8 +1,13 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.devlive.features.core-utils;
-in 
+in
 {
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [

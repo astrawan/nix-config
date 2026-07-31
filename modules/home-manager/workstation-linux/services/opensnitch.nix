@@ -1,9 +1,8 @@
 { config, lib, ... }:
 
 let
-  desktop = config.devlive.features.desktop;
   cfg = config.devlive.services.opensnitch;
-in 
+in
 {
   config = lib.mkIf cfg.enable {
     services.opensnitch-ui.enable = true;

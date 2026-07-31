@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.devlive.programs.zed-editor;
@@ -7,7 +12,11 @@ in
   config = lib.mkIf cfg.enable {
     programs.zed-editor = {
       enable = true;
-      extensions = [ "nix" "toml" "rust" ];
+      extensions = [
+        "nix"
+        "toml"
+        "rust"
+      ];
       userSettings = {
         agent = {
           dock = "right";
@@ -47,7 +56,12 @@ in
           dock = "bottom";
           detect_venv = {
             on = {
-              directories = [ ".env" "env" ".venv" "vend" ];
+              directories = [
+                ".env"
+                "env"
+                ".venv"
+                "vend"
+              ];
               activate_script = "default";
             };
           };
@@ -75,4 +89,3 @@ in
     };
   };
 }
-

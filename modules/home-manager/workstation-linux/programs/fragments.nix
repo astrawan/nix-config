@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.devlive.programs.fragments;
@@ -8,13 +13,13 @@ in
     home.packages = with pkgs; [
       fragments
     ];
-    programs.yazi.settings.opener.fragments = lib.mkIf(config.programs.yazi.enable) [
+    programs.yazi.settings.opener.fragments = lib.mkIf (config.programs.yazi.enable) [
       {
-          run = ''fragments "$@"'';
-          orphan = true;
+        run = ''fragments "$@"'';
+        orphan = true;
       }
     ];
-    programs.yazi.settings.open.rules = lib.mkIf(config.programs.yazi.enable) [
+    programs.yazi.settings.open.rules = lib.mkIf (config.programs.yazi.enable) [
       {
         mime = "application/bittorrent";
         use = "fragments";

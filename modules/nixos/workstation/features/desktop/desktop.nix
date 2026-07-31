@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   fonts = lib.mkIf (config.devlive.features.desktop != null) {
     fontDir.enable = true;

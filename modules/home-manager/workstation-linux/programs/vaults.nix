@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.devlive.programs.vaults;
@@ -9,6 +14,8 @@ in
     home.packages = with pkgs; [
       vaults
     ];
-    home.file.".config/global_config.toml".source = (settingsFormat.generate "global_config.toml" cfg.settings);
+    home.file.".config/global_config.toml".source = (
+      settingsFormat.generate "global_config.toml" cfg.settings
+    );
   };
 }

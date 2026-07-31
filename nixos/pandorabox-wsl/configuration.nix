@@ -8,7 +8,10 @@
 { ... }:
 
 {
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   networking.hostName = "pandorabox-wsl"; # Define your hostname.
 

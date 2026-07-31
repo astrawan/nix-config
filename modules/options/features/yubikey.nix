@@ -1,8 +1,8 @@
-{ config, lib, pkgs, ... }:
+{
+  lib,
+  ...
+}:
 
-let
-  cfg = config.devlive.features.yubikey;
-in
 {
   options.devlive.features.yubikey = {
     enable = lib.mkEnableOption "yubikey";

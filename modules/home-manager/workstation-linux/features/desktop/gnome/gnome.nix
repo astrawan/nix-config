@@ -1,11 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  ...
+}:
 
 let
   desktop = config.devlive.features.desktop;
-in 
+in
 {
   config = lib.mkIf (desktop.type == "gnome") {
-    home.packages = desktop.extraHomePackages ++desktop.gnome.extraHomePackages;
+    home.packages = desktop.extraHomePackages ++ desktop.gnome.extraHomePackages;
 
     xdg.mimeApps.defaultApplications = {
       "image/jpeg" = "org.gnome.Loupe.desktop";
@@ -59,7 +63,8 @@ in
           "x-scheme-handler/tg" = "org.telegram.desktop.desktop";
           "x-scheme-handler/tonsite" = "org.telegram.desktop.desktop";
         }
-      else {}
+      else
+        { }
     );
 
     dconf.enable = true;
@@ -91,7 +96,7 @@ in
       dynamic-workspaces = false;
     };
 
-      # Add custom shortcuts
+    # Add custom shortcuts
     dconf.settings."org/gnome/settings-daemon/plugins/media-keys" = {
       custom-keybindings = [
         "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
@@ -114,47 +119,17 @@ in
       favorite-apps = [
         "org.gnome.Software.desktop"
       ]
-      ++ (
-        if config.devlive.programs.brave.enable then
-          ["brave-browser.desktop"]
-        else
-          []
-      )
-      ++ (
-        if config.devlive.programs.librewolf.enable then
-          ["librewolf.desktop"]
-        else
-          []
-      )
-      ++ (
-        if config.devlive.programs.zen-browser.enable then
-          ["zen-beta.desktop"]
-        else
-          []
-      )
+      ++ (if config.devlive.programs.brave.enable then [ "brave-browser.desktop" ] else [ ])
+      ++ (if config.devlive.programs.librewolf.enable then [ "librewolf.desktop" ] else [ ])
+      ++ (if config.devlive.programs.zen-browser.enable then [ "zen-beta.desktop" ] else [ ])
       ++ [
         "org.gnome.Evolution.desktop"
         "org.gnome.Nautilus.desktop"
         "com.mitchellh.ghostty.desktop"
       ]
-      ++ (
-        if config.devlive.programs.folio.enable then
-          ["com.toolstack.Folio.desktop"]
-        else
-          []
-      )
-      ++ (
-        if desktop.enableTelegram then
-          ["org.telegram.desktop.desktop"]
-        else
-          []
-      )
-      ++ (
-        if config.devlive.features.devel-utils.enable then
-          ["dbeaver.desktop"]
-        else
-          []
-      );
+      ++ (if config.devlive.programs.folio.enable then [ "com.toolstack.Folio.desktop" ] else [ ])
+      ++ (if desktop.enableTelegram then [ "org.telegram.desktop.desktop" ] else [ ])
+      ++ (if config.devlive.features.devel-utils.enable then [ "dbeaver.desktop" ] else [ ]);
       last-selected-power-profile = "power";
     };
     dconf.settings."org/gnome/shell/keybindings" = {

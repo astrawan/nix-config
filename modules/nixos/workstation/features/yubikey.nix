@@ -1,8 +1,12 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  ...
+}:
 
 let
   cfg = config.devlive.features.yubikey;
-in 
+in
 {
   config = lib.mkIf cfg.enable {
     services.pcscd = {

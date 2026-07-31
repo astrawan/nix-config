@@ -1,7 +1,10 @@
-{ config, lib, pkgs, ... }:
+{
+  lib,
+  pkgs,
+  ...
+}:
 
 let
-  cfg = config.devlive.programs.jellyfin-tui;
   yamlFormat = pkgs.formats.yaml { };
 in
 {

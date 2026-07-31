@@ -1,7 +1,10 @@
-{ config, lib, pkgs, ... }:
+{
+  lib,
+  pkgs,
+  ...
+}:
 
 let
-  cfg = config.devlive.programs.vaults;
   settingsFormat = pkgs.formats.toml { };
 in
 {
@@ -9,7 +12,7 @@ in
     enable = lib.mkEnableOption "vaults";
     settings = lib.mkOption {
       inherit (settingsFormat) type;
-      default = {};
+      default = { };
     };
   };
 }

@@ -2,7 +2,7 @@
 
 {
   options.devlive.infra.postgresql = {
-    enable = lib.mkEnableOption "postgresql"; 
+    enable = lib.mkEnableOption "postgresql";
     host = lib.mkOption {
       type = lib.types.str;
     };

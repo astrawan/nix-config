@@ -1,6 +1,6 @@
 { config, lib, ... }:
 
-let 
+let
   cfg = config.devlive.programs.eza;
 in
 {

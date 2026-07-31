@@ -6,10 +6,10 @@
 { config, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   networking.hostName = "pandorabox-v2"; # Define your hostname.
 
@@ -29,7 +29,10 @@
   services.fwupd.enable = true;
 
   nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
     auto-optimise-store = true;
   };
 

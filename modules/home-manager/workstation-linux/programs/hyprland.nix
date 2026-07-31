@@ -1,4 +1,8 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  ...
+}:
 
 let
   desktop = config.devlive.features.desktop;
@@ -19,9 +23,24 @@ in
           "${config.xdg.configHome}/hypr/permissions.conf"
           "${config.xdg.configHome}/hypr/rules.conf"
         ]
-        ++(if desktop.type == "noctalia" then [ "${config.xdg.configHome}/hypr/noctalia/noctalia-colors.conf" ] else [])
-        ++(if config.programs.ghostty.enable then [ "${config.xdg.configHome}/hypr/rules-ghostty.conf" ] else [])
-        ++(if config.programs.wezterm.enable then [ "${config.xdg.configHome}/hypr/rules-wezterm.conf" ] else []);
+        ++ (
+          if desktop.type == "noctalia" then
+            [ "${config.xdg.configHome}/hypr/noctalia/noctalia-colors.conf" ]
+          else
+            [ ]
+        )
+        ++ (
+          if config.programs.ghostty.enable then
+            [ "${config.xdg.configHome}/hypr/rules-ghostty.conf" ]
+          else
+            [ ]
+        )
+        ++ (
+          if config.programs.wezterm.enable then
+            [ "${config.xdg.configHome}/hypr/rules-wezterm.conf" ]
+          else
+            [ ]
+        );
       };
     };
 
@@ -55,7 +74,6 @@ in
     xdg.configFile."hypr/rules-wezterm.conf" = lib.mkIf (config.programs.wezterm.enable) {
       source = ../../../../assets/config/hypr/rules-wezterm.conf;
     };
-
 
   };
 }

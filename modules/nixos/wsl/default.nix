@@ -2,7 +2,7 @@
 
 let
   cfg = config.devlive.wsl;
-in 
+in
 {
   imports = [
     ../common/users.nix

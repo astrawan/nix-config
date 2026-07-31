@@ -1,4 +1,8 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  ...
+}:
 
 let
   cfg = config.devlive.programs.librewolf;
@@ -76,47 +80,48 @@ in
           "privacy.userContext.newTabContainerOnLeftClick.enabled" = true;
           "sidebar.verticalTabs" = true;
           "sidebar.visibility" = "expand-on-hover";
-          "browser.uiCustomization.state" = ''{
-            "placements": {
-              "widget-overflow-fixed-list": [],
-              "unified-extensions-area": [],
-              "nav-bar": [
-                "sidebar-button",
-                "back-button",
-                "forward-button",
-                "urlbar-container",
-                "vertical-spacer",
-                "firefox-view-button",
-                "unified-extensions-button",
-                "ublock0_raymondhill_net-browser-action"
-              ],
-              "toolbar-menubar": [
-                "menubar-items"
-              ],
-              "TabsToolbar": [],
-              "vertical-tabs": [
-                "tabbrowser-tabs"
-              ],
-              "PersonalToolbar": [
-                "personal-bookmarks"
-              ]
-            },
-            "seen": [
-              "developer-button",
-              "screenshot-button",
-              "ublock0_raymondhill_net-browser-action"
-            ],
-            "dirtyAreaCache": [
-              "nav-bar",
-              "TabsToolbar",
-              "vertical-tabs",
-              "toolbar-menubar",
-              "PersonalToolbar",
-              "unified-extensions-area"
-            ],
-            "currentVersion": 23,
-            "newElementCount": 8
-          }'';
+          "browser.uiCustomization.state" = ''
+            {
+                        "placements": {
+                          "widget-overflow-fixed-list": [],
+                          "unified-extensions-area": [],
+                          "nav-bar": [
+                            "sidebar-button",
+                            "back-button",
+                            "forward-button",
+                            "urlbar-container",
+                            "vertical-spacer",
+                            "firefox-view-button",
+                            "unified-extensions-button",
+                            "ublock0_raymondhill_net-browser-action"
+                          ],
+                          "toolbar-menubar": [
+                            "menubar-items"
+                          ],
+                          "TabsToolbar": [],
+                          "vertical-tabs": [
+                            "tabbrowser-tabs"
+                          ],
+                          "PersonalToolbar": [
+                            "personal-bookmarks"
+                          ]
+                        },
+                        "seen": [
+                          "developer-button",
+                          "screenshot-button",
+                          "ublock0_raymondhill_net-browser-action"
+                        ],
+                        "dirtyAreaCache": [
+                          "nav-bar",
+                          "TabsToolbar",
+                          "vertical-tabs",
+                          "toolbar-menubar",
+                          "PersonalToolbar",
+                          "unified-extensions-area"
+                        ],
+                        "currentVersion": 23,
+                        "newElementCount": 8
+                      }'';
         };
         search = {
           default = "ddg";
@@ -126,12 +131,14 @@ in
       };
     };
 
-    xdg.mimeApps.defaultApplications = lib.mkIf (config.devlive.features.desktop.defaultWebBrowser == "librewolf") {
-      "text/html" = "librewolf.desktop";
-      "x-scheme-handler/http" = "librewolf.desktop";
-      "x-scheme-handler/https" = "librewolf.desktop";
-      "x-scheme-handler/about" = "librewolf.desktop";
-      "x-scheme-handler/unknown" = "librewolf.desktop";
-    };
+    xdg.mimeApps.defaultApplications =
+      lib.mkIf (config.devlive.features.desktop.defaultWebBrowser == "librewolf")
+        {
+          "text/html" = "librewolf.desktop";
+          "x-scheme-handler/http" = "librewolf.desktop";
+          "x-scheme-handler/https" = "librewolf.desktop";
+          "x-scheme-handler/about" = "librewolf.desktop";
+          "x-scheme-handler/unknown" = "librewolf.desktop";
+        };
   };
 }

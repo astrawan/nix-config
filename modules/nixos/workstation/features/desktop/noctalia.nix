@@ -1,17 +1,26 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   desktop = config.devlive.features.desktop;
 in
 {
   config = lib.mkIf (desktop.type == "noctalia") {
-    environment.systemPackages = with pkgs; [
-      tuigreet
-    ] ++desktop.extraPackages ++desktop.noctalia.extraPackages;
+    environment.systemPackages =
+      with pkgs;
+      [
+        tuigreet
+      ]
+      ++ desktop.extraPackages
+      ++ desktop.noctalia.extraPackages;
     environment.variables = {
       MOZ_ENABLE_WAYLAND = "1";
       NIXOS_OZONE_WL = "1";
-      QT_QPA_PLATFORMTHEME="qt6ct";
+      QT_QPA_PLATFORMTHEME = "qt6ct";
     };
     programs.evolution.enable = true;
     programs.hyprland = lib.mkIf (desktop.noctalia.compositor == "hyprland") {

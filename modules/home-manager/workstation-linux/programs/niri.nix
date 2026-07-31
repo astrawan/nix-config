@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   desktop = config.devlive.features.desktop;
@@ -37,7 +42,7 @@ in
           ../../../../assets/config/niri/layer-rule-noctalia-4.kdl
         else if (desktop.type == "noctalia" && desktop.noctalia.package == pkgs.noctalia-shell-5) then
           ../../../../assets/config/niri/layer-rule-noctalia-5.kdl
-        else 
+        else
           ../../../../assets/config/niri/layer-rule.kdl
       );
     };

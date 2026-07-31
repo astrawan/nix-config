@@ -1,8 +1,8 @@
-{ config, lib, pkgs, ... }:
+{
+  lib,
+  ...
+}:
 
-let
-  cfg = config.devlive.security.auditd;
-in 
 {
   options.devlive.security.auditd = {
     enable = lib.mkEnableOption "auditd";

@@ -2,7 +2,7 @@
 
 let
   cfg = config.devlive.services.pipewire;
-in 
+in
 {
   config = lib.mkIf cfg.enable {
     # Enable sound with pipewire.

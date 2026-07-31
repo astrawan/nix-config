@@ -3,7 +3,7 @@
 {
   nixpkgs.overlays = [
     (self: super: {
-      sddm-noctalia = (super.callPackage ../pkgs/sddm-noctalia.nix {});
+      sddm-noctalia = (super.callPackage ../pkgs/sddm-noctalia.nix { });
     })
   ];
 }

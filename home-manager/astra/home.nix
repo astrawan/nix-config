@@ -1,5 +1,10 @@
 # vi: sw=2 ts=2 et
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   user = config.devlive.user;
@@ -11,7 +16,8 @@ in
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "${user.name}";
-  home.homeDirectory = if pkgs.stdenv.hostPlatform.isDarwin then "/Users/${user.name}" else "/home/${user.name}";
+  home.homeDirectory =
+    if pkgs.stdenv.hostPlatform.isDarwin then "/Users/${user.name}" else "/home/${user.name}";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -56,7 +62,7 @@ in
   home.sessionVariables = {
     EDITOR = "vim";
   };
-  xdg.mimeApps.enable = lib.mkIf(!pkgs.stdenv.hostPlatform.isDarwin) true;
+  xdg.mimeApps.enable = lib.mkIf (!pkgs.stdenv.hostPlatform.isDarwin) true;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -122,7 +128,7 @@ in
     defaultSopsFile = ../../secrets/secrets.astra.yaml;
     gnupg.home = "${config.home.homeDirectory}/.gnupg";
     secrets = {
-      password_jellyfin = {};
+      password_jellyfin = { };
     };
   };
 }

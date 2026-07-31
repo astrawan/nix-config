@@ -1,21 +1,18 @@
-{ config, lib, ... }:
+{ lib, ... }:
 
-let
-  cfg = config.devlive.programs.deja-dup;
-in
 {
   options.devlive.programs.deja-dup = {
     enable = lib.mkEnableOption "deja-dup";
     exclude-list = lib.mkOption {
       type = lib.types.listOf lib.types.str;
-      default = [];
+      default = [ ];
     };
     include-list = lib.mkOption {
       type = lib.types.listOf lib.types.str;
-      default = [];
+      default = [ ];
     };
 
-    google = rec {
+    google = {
       enable = lib.mkEnableOption "deja-dup.google";
       folder = lib.mkOption {
         type = lib.types.str;

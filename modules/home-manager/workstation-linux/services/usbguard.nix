@@ -1,8 +1,14 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.devlive.services.usbguard;
-in {
+in
+{
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       usbguard-notifier
@@ -19,8 +25,10 @@ in {
       #   org.gradle.daemon.idletimeout=3600000
       # '';
 
-      ".config/systemd/user/usbguard-notifier.service".source = "${pkgs.usbguard-notifier}/share/systemd/user/usbguard-notifier.service";
-      ".config/systemd/user/default.target.wants/usbguard-notifier.service".source = "${pkgs.usbguard-notifier}/share/systemd/user/usbguard-notifier.service";
+      ".config/systemd/user/usbguard-notifier.service".source =
+        "${pkgs.usbguard-notifier}/share/systemd/user/usbguard-notifier.service";
+      ".config/systemd/user/default.target.wants/usbguard-notifier.service".source =
+        "${pkgs.usbguard-notifier}/share/systemd/user/usbguard-notifier.service";
     };
   };
 }

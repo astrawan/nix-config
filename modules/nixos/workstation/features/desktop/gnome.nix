@@ -1,8 +1,13 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   desktop = config.devlive.features.desktop;
-in 
+in
 {
   config = lib.mkIf (desktop.type == "gnome") {
     services.displayManager.gdm.enable = true;
@@ -11,27 +16,33 @@ in
       enable = true;
       user = "${config.devlive.user.name}";
     };
-    environment.gnome.excludePackages = (with pkgs; [
-      decibels
-      evince
-      geary
-      gnome-console
-      gnome-music
-      totem
-    ]);
+    environment.gnome.excludePackages = (
+      with pkgs;
+      [
+        decibels
+        evince
+        geary
+        gnome-console
+        gnome-music
+        totem
+      ]
+    );
 
-    environment.systemPackages = with pkgs; [
-      adwaita-qt
-      adwaita-qt6
-      gnome-decoder
-      gnome-obfuscate
-      gnome-software
-      iotas
-      papers
-      nixos-artwork.wallpapers.simple-blue
-      ghostty
-      showtime
-    ] ++desktop.gnome.extraPackages;
+    environment.systemPackages =
+      with pkgs;
+      [
+        adwaita-qt
+        adwaita-qt6
+        gnome-decoder
+        gnome-obfuscate
+        gnome-software
+        iotas
+        papers
+        nixos-artwork.wallpapers.simple-blue
+        ghostty
+        showtime
+      ]
+      ++ desktop.gnome.extraPackages;
     programs.evolution.enable = true;
 
     # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229

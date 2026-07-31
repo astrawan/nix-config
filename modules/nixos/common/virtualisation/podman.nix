@@ -2,7 +2,7 @@
 
 let
   cfg = config.devlive.virtualisation.podman;
-in 
+in
 {
   config = lib.mkIf cfg.enable {
     # Enable podman

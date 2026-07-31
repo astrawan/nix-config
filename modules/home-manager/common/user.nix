@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   user = config.devlive.user;
@@ -7,7 +12,7 @@ in
   config = lib.mkIf (user.gpg.publicKey.fingerprint != null) {
     programs.gpg = {
       enable = true;
-      publicKeys = lib.mkIf(user.gpg.publicKey.fingerprint != null) ([
+      publicKeys = lib.mkIf (user.gpg.publicKey.fingerprint != null) ([
         {
           source = builtins.fetchurl {
             url = "https://keys.openpgp.org/vks/v1/by-fingerprint/${user.gpg.publicKey.fingerprint}";

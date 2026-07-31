@@ -2,7 +2,7 @@
 
 let
   cfg = config.devlive.programs.lazygit;
-in 
+in
 {
   config = lib.mkIf cfg.enable {
     programs.lazygit = {

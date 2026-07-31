@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.devlive.programs.keystore-explorer;
@@ -14,7 +19,12 @@ in
       exec = "keystore-explorer";
       icon = "${pkgs.keystore-explorer.outPath}/share/keystore-explorer/icons/kse_256.png";
       genericName = "Multipurpose keystore and certificate tool";
-      categories = [ "Utility" "Security" "System" "Java" ];
+      categories = [
+        "Utility"
+        "Security"
+        "System"
+        "Java"
+      ];
       comment = "User friendly GUI application for creating, managing and examining keystores, keys, certificates, certificate requests, certificate revocation lists and more.";
     };
   };

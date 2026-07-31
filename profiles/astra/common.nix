@@ -16,7 +16,10 @@
       # Get the imported key keygrip value with command `gpg -k --with-keygrip`
       sshKeys = [ "50A310CD04463CA3653738D4C245D087C6AD5612" ];
     };
-    groups = [ "networkmanager" "wheel" ];
+    groups = [
+      "networkmanager"
+      "wheel"
+    ];
     email = "astra@pm.me";
     packages = with pkgs; [
       home-manager

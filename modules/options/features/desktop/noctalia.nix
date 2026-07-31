@@ -1,4 +1,8 @@
-{ config, lib, pkgs, ... }:
+{
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   options.devlive.features.desktop.noctalia = {

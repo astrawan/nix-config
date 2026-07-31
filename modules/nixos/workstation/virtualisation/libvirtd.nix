@@ -13,7 +13,7 @@ in
       };
     };
     virtualisation.spiceUSBRedirection.enable = true;
-    users.groups.libvirtd.members = ["${config.devlive.user.name}"];
+    users.groups.libvirtd.members = [ "${config.devlive.user.name}" ];
     programs.virt-manager.enable = true;
   };
 }

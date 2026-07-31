@@ -1,4 +1,8 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  pkgs,
+  ...
+}:
 
 {
   networking.hostName = "pgsql17";
@@ -19,7 +23,10 @@
     package = pkgs.postgresql_17;
   };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   system.stateVersion = "26.05";
 }

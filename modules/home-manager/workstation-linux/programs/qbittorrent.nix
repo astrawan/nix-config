@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.devlive.programs.qbittorrent;
@@ -8,13 +13,13 @@ in
     home.packages = with pkgs; [
       qbittorrent
     ];
-    programs.yazi.settings.opener.qbittorrent = lib.mkIf(config.programs.yazi.enable) [
+    programs.yazi.settings.opener.qbittorrent = lib.mkIf (config.programs.yazi.enable) [
       {
-          run = ''qbittorrent "$@"'';
-          orphan = true;
+        run = ''qbittorrent "$@"'';
+        orphan = true;
       }
     ];
-    programs.yazi.settings.open.rules = lib.mkIf(config.programs.yazi.enable) [
+    programs.yazi.settings.open.rules = lib.mkIf (config.programs.yazi.enable) [
       {
         mime = "application/bittorrent";
         use = "qbittorrent";

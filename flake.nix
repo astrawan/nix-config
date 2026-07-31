@@ -20,12 +20,25 @@
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, nixos-wsl, helium-browser, home-manager, nix-darwin, sops-nix, noctalia, noctalia5, zen-browser, ... }:
+  outputs =
+    {
+      nixpkgs,
+      nixos-wsl,
+      helium-browser,
+      home-manager,
+      nix-darwin,
+      sops-nix,
+      noctalia,
+      noctalia5,
+      zen-browser,
+      ...
+    }:
     let
       lib = nixpkgs.lib;
       darwinSystem = "aarch64-darwin";
       linuxSystem = "x86_64-linux";
-    in {
+    in
+    {
       nixosConfigurations = {
         pandorabox = lib.nixosSystem {
           system = linuxSystem;
@@ -106,9 +119,13 @@
       };
       homeConfigurations = {
         astra-linux = home-manager.lib.homeManagerConfiguration {
-          pkgs = ((nixpkgs.legacyPackages.${linuxSystem}.extend noctalia.overlays.default).extend (final: prev: {
-            noctalia-shell-5 = noctalia5.packages.${linuxSystem}.default;
-          }));
+          pkgs = (
+            (nixpkgs.legacyPackages.${linuxSystem}.extend noctalia.overlays.default).extend (
+              final: prev: {
+                noctalia-shell-5 = noctalia5.packages.${linuxSystem}.default;
+              }
+            )
+          );
           modules = [
             sops-nix.homeManagerModules.sops
             ({ ... }: {

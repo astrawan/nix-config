@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   config = {
@@ -26,7 +31,8 @@
       "boot.shell_on_fail"
       "udev.log_priority=3"
       "rd.systemd.show_status=auto"
-    ] ++ (
+    ]
+    ++ (
       if (config.devlive.boot.plymouth.enable) then
         [
           "quiet"
@@ -36,7 +42,7 @@
         [ ]
     );
     boot.blacklistedKernelModules = [ "mmc_block" ];
-    boot.plymouth = lib.mkIf(config.devlive.boot.plymouth.enable) {
+    boot.plymouth = lib.mkIf (config.devlive.boot.plymouth.enable) {
       enable = true;
       theme = "bgrt";
     };

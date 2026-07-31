@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   desktop = config.devlive.features.desktop;
@@ -14,22 +19,25 @@ in
     enableTelegram = true;
     enableWhatsApp = true;
     extraHomePackages = with pkgs; [
-        gimp
-        gradia
-        inkscape
-        libreoffice
-        popcorntime
-        remmina
-        wireshark
+      gimp
+      gradia
+      inkscape
+      libreoffice
+      popcorntime
+      remmina
+      wireshark
     ];
-    gnome.extraHomePackages = lib.mkIf (desktop.type == "gnome") (with pkgs; [
+    gnome.extraHomePackages = lib.mkIf (desktop.type == "gnome") (
+      with pkgs;
+      [
         dconf-editor
         foliate
         fragments
         gnome-extension-manager
         gnome-tweaks
         lock
-    ]);
+      ]
+    );
     noctalia = lib.mkIf (desktop.type == "noctalia") {
       compositor = "niri";
       package = pkgs.noctalia-shell-5;
