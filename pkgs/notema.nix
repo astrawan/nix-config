@@ -17,7 +17,6 @@ rustPlatform.buildRustPackage rec {
     sha256 = "sha256-CUsfq1jnG0TZWbhLqN3JvgqMA9bQpD9UQaOpBlYj5fs=";
   };
 
-  RUST_TOOLCHAIN = "stable";
   cargoLock = {
     lockFile = "${src}/Cargo.lock";
     outputHashes = {
@@ -59,7 +58,7 @@ rustPlatform.buildRustPackage rec {
 
   meta = with lib; {
     description = "A terminal-based Markdown journaling app";
-    mainProgram = "notema";
+    mainProgram = "${pname}";
     homePage = "https://github.com/paviro/Notema";
     license = licenses.eupl12;
     maintainers = [ ];
