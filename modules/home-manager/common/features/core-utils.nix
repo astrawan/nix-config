@@ -13,7 +13,6 @@ in
     home.packages = with pkgs; [
       dig
       jaq
-      notema
       p7zip-rar
       rustnet
       tcpdump
@@ -29,5 +28,6 @@ in
     };
 
     devlive.programs.zellij.enable = true;
+    devlive.programs.notema.enable = true;
   };
 }
