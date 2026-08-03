@@ -302,11 +302,18 @@ in
               ];
               concave_edge_corners = false;
               end = [
-                "launcher"
-                "clock"
-                "date"
-                "wallpaper"
-                "workspaces"
+                "widget"
+                "media"
+                "tray"
+                "notifications"
+                "clipboard"
+                "network"
+                "bluetooth"
+                "volume"
+                "brightness"
+                "battery"
+                "session"
+                "control-center"
               ];
               margin_edge = 0;
               margin_ends = 16;
