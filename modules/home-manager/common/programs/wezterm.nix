@@ -20,6 +20,7 @@ in
 
       local config = wezterm.config_builder()
 
+      config.adjust_window_size_when_changing_font_size = false
       config.font = wezterm.font("FiraCode Nerd Font Mono", {weight="Medium", stretch="Normal", style="Normal"})
       config.color_scheme = '${color_scheme}'
       config.enable_tab_bar = false
