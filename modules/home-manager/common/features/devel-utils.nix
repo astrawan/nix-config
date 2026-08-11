@@ -15,6 +15,9 @@ in
       [
         ast-grep
         nil
+        nixfmt
+        shfmt
+        stylua
         tree-sitter
       ]
       ++ (
