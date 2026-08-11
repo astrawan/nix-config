@@ -389,6 +389,11 @@ in
               };
             };
 
+            location = {
+              latitude = -8.6314299999999999;
+              longitude = 115.17268;
+            };
+
             lockscreen = {
               fingerprint = false;
               monitors = [ "eDP-1" ];
