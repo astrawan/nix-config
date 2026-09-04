@@ -484,7 +484,7 @@ in
 
             widget = {
               control-center = {
-                custom_image = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake-white.svg";
+                custom_image = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
                 custom_image_colorize = true;
                 glyph = "snowflake";
                 scale = 1.5;
