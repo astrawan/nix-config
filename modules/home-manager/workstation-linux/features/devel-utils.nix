@@ -14,6 +14,7 @@ in
       with pkgs;
       [
         inotify-tools
+        dbx-desktop
       ]
       ++ (
         if config.devlive.features.desktop.type == "gnome" then

@@ -12,9 +12,11 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+    dbx.url = "github:t8y2/dbx/v0.6.10";
+    dbx.inputs.nixpkgs.follows = "nixpkgs";
     noctalia.url = "github:noctalia-dev/noctalia-shell/legacy-v4";
     noctalia.inputs.nixpkgs.follows = "nixpkgs";
-    noctalia5.url = "github:noctalia-dev/noctalia-shell/v5.0.1";
+    noctalia5.url = "github:noctalia-dev/noctalia-shell/v5.1.0";
     noctalia5.inputs.nixpkgs.follows = "nixpkgs";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
@@ -28,6 +30,7 @@
       home-manager,
       nix-darwin,
       sops-nix,
+      dbx,
       noctalia,
       noctalia5,
       zen-browser,
@@ -123,6 +126,7 @@
             (nixpkgs.legacyPackages.${linuxSystem}.extend noctalia.overlays.default).extend (
               final: prev: {
                 noctalia-shell-5 = noctalia5.packages.${linuxSystem}.default;
+                dbx-desktop = dbx.packages.${linuxSystem}.dbx-desktop;
               }
             )
           );
