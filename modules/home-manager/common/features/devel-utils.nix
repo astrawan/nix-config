@@ -10,24 +10,14 @@ let
 in
 {
   config = lib.mkIf cfg.enable {
-    home.packages =
-      with pkgs;
-      [
-        ast-grep
-        nil
-        nixfmt
-        shfmt
-        stylua
-        tree-sitter
-      ]
-      ++ (
-        if (config.devlive.features.desktop.type != null || config.devlive.host.system == "darwin") then
-          [
-            pkgs.dbeaver-bin
-          ]
-        else
-          [ ]
-      );
+    home.packages = with pkgs; [
+      ast-grep
+      nil
+      nixfmt
+      shfmt
+      stylua
+      tree-sitter
+    ];
 
     programs.fd.enable = true;
     programs.fzf.enable = true;

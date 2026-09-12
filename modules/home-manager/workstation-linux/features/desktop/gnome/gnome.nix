@@ -128,8 +128,7 @@ in
         "com.mitchellh.ghostty.desktop"
       ]
       ++ (if config.devlive.programs.folio.enable then [ "com.toolstack.Folio.desktop" ] else [ ])
-      ++ (if desktop.enableTelegram then [ "org.telegram.desktop.desktop" ] else [ ])
-      ++ (if config.devlive.features.devel-utils.enable then [ "dbeaver.desktop" ] else [ ]);
+      ++ (if desktop.enableTelegram then [ "org.telegram.desktop.desktop" ] else [ ]);
       last-selected-power-profile = "power";
     };
     dconf.settings."org/gnome/shell/keybindings" = {
