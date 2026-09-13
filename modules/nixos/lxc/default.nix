@@ -10,6 +10,9 @@ in
   config = lib.mkIf cfg.enable {
     nix.settings.sandbox = false;
 
+    networking.nameservers = [
+      "172.21.21.1"
+    ];
     proxmoxLXC = {
       manageNetwork = false;
       privileged = true;
@@ -25,13 +28,6 @@ in
         PasswordAuthentication = true;
         PermitEmptyPasswords = "yes";
       };
-    };
-    # Cache DNS lookups to improve performance
-    services.resolved = {
-      extraConfig = ''
-        Cache=true
-        CacheFromLocalhost=true
-      '';
     };
 
     devlive.host.type = "lxc";

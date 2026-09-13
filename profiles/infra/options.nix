@@ -18,5 +18,4 @@
   };
 
   devlive.lxc.enable = true;
-  devlive.infra.jdkPackage = pkgs.jdk21_headless;
 }
