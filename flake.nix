@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-26.05";
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
     nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     helium-browser.url = "github:oxcl/nix-flake-helium-browser";
@@ -25,6 +26,7 @@
   outputs =
     {
       nixpkgs,
+      nix-cachyos-kernel,
       nixos-wsl,
       helium-browser,
       home-manager,
@@ -47,6 +49,9 @@
           system = linuxSystem;
           modules = [
             ({ ... }: {
+              nixpkgs.overlays = [
+                nix-cachyos-kernel.overlays.pinned
+              ];
               imports = [
                 ./overlays/workstation.nix
                 ./modules/options
@@ -61,6 +66,9 @@
           system = linuxSystem;
           modules = [
             ({ ... }: {
+              nixpkgs.overlays = [
+                nix-cachyos-kernel.overlays.pinned
+              ];
               imports = [
                 ./overlays/workstation.nix
                 ./modules/options
