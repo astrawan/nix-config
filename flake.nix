@@ -193,9 +193,10 @@
           inherit (nix-cachyos-kernel.packages.${linuxSystem})
             linux-cachyos-bore-lto-x86_64-v3
             linux-cachyos-bore-lto-x86_64-v4
-            linux-cachyos-bore-x86_64-v2
             linux-cachyos-bore-x86_64-v3
             linux-cachyos-bore-x86_64-v4
+            linux-cachyos-eevdf
+            linux-cachyos-eevdf-lto
             ;
           inherit (dbx.packages.${linuxSystem})
             dbx-desktop
