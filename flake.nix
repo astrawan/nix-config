@@ -177,7 +177,7 @@
                 zen-browser.homeModules.beta
                 ./overlays/darwin.nix
                 ./modules/options
-                ./modules/home-manager/workstation-darwin
+                ./modules/home-manager/workstx86_64-linuxation-darwin
                 ./profiles/astra/workstation-darwin.nix
                 ./home-manager/astra/home.nix
               ];
@@ -185,6 +185,22 @@
               devlive.host.system = "darwin";
             })
           ];
+        };
+      };
+      hydraJobs = {
+        packages.${linuxSystem} = {
+          # https://github.com/xddxdd/nix-cachyos-kernel/blob/d722a934d795f6c4d9930a0b252483bcdd3e541d/flake.nix#L111
+          inherit (nix-cachyos-kernel.packages.${linuxSystem})
+            linux-cachyos-bore-lto-x86_64-v3
+            linux-cachyos-bore-lto-x86_64-v4
+            linux-cachyos-bore-x86_64-v2
+            linux-cachyos-bore-x86_64-v3
+            linux-cachyos-bore-x86_64-v4
+            ;
+          inherit (dbx.packages.${linuxSystem})
+            dbx-desktop
+            ;
+          noctalia-shell-5 = noctalia5.packages.${linuxSystem}.default;
         };
       };
     };
