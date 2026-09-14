@@ -17,9 +17,6 @@
     # };
     boot.loader.efi.canTouchEfiVariables = true;
 
-    # Use latest kernel.
-    boot.kernelPackages = pkgs.linuxPackages_latest;
-
     # playmouth
     boot.consoleLogLevel = 3;
     boot.initrd.systemd.enable = true;
