@@ -26,13 +26,6 @@ in
         PermitEmptyPasswords = "yes";
       };
     };
-    # Cache DNS lookups to improve performance
-    services.resolved = {
-      extraConfig = ''
-        Cache=true
-        CacheFromLocalhost=true
-      '';
-    };
 
     devlive.host.type = "lxc";
   };
