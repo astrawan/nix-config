@@ -25,16 +25,16 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1789323734,
-        "narHash": "sha256-U0R6E81+fe3TDhR0Pg8PiaUl4sbgd2seuCBo1BcS75w=",
+        "lastModified": 1789493993,
+        "narHash": "sha256-pa2UNSMSFmv++pow1oqz+UCoq72bqhSqyv13WeXuw90=",
         "owner": "t8y2",
         "repo": "dbx",
-        "rev": "61b13826c57732946b18dc5a1635076ec06c1ed3",
+        "rev": "a8cf635292770fd6a3b9845722e6622d750d9f3a",
         "type": "github"
       },
       "original": {
         "owner": "t8y2",
-        "ref": "v0.6.12",
+        "ref": "v0.6.14",
         "repo": "dbx",
         "type": "github"
       }
