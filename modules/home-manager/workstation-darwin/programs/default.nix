@@ -8,7 +8,7 @@
 
   config = {
     programs.aerospace = {
-      enable = true;
+      enable = false;
       launchd = {
         enable = true;
       };
@@ -59,7 +59,7 @@
       };
     };
     services.jankyborders = {
-      enable = true;
+      enable = false;
       settings = {
         active_color = "0xfff1c232";
         width = 6.0;
