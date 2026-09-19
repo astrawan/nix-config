@@ -29,6 +29,6 @@ in
 
     devlive.programs.lazygit.enable = true;
     devlive.programs.vscode.enable = true;
-    devlive.programs.zed-editor.enable = true;
+    devlive.programs.zed-editor.enable = false;
   };
 }
