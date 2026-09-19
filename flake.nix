@@ -13,7 +13,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
-    dbx.url = "github:t8y2/dbx/v0.6.14";
+    dbx.url = "github:t8y2/dbx/v0.6.16";
     dbx.inputs.nixpkgs.follows = "nixpkgs";
     noctalia.url = "github:noctalia-dev/noctalia-shell/legacy-v4";
     noctalia.inputs.nixpkgs.follows = "nixpkgs";
@@ -177,7 +177,7 @@
                 zen-browser.homeModules.beta
                 ./overlays/darwin.nix
                 ./modules/options
-                ./modules/home-manager/workstx86_64-linuxation-darwin
+                ./modules/home-manager/workstation-darwin
                 ./profiles/astra/workstation-darwin.nix
                 ./home-manager/astra/home.nix
               ];
