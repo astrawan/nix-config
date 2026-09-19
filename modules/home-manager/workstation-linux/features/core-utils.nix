@@ -13,6 +13,7 @@ in
     home.packages = with pkgs; [
       ffmpeg
       pciutils
+      rustnet
     ];
 
     devlive.programs.notema.enable = true;

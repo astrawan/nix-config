@@ -14,7 +14,6 @@ in
       dig
       jaq
       p7zip-rar
-      rustnet
       tcpdump
       trippy
       wget
