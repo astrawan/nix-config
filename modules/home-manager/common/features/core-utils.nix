@@ -28,6 +28,5 @@ in
     };
 
     devlive.programs.zellij.enable = true;
-    devlive.programs.notema.enable = true;
   };
 }

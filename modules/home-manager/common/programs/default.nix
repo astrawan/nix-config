@@ -6,8 +6,8 @@
     ./eza.nix
     ./fish.nix
     ./jellyfin-tui.nix
+    ./qbittorrent.nix
     ./lazygit.nix
-    ./notema.nix
     ./tmux.nix
     ./vscode.nix
     ./wezterm.nix

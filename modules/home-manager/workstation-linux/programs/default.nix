@@ -12,7 +12,7 @@
     ./keystore-explorer.nix
     ./librewolf.nix
     ./niri.nix
-    ./qbittorrent.nix
+    ./notema.nix
     ./vaults.nix
     ./wezterm.nix
     ./zen-browser.nix

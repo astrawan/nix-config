@@ -14,5 +14,7 @@ in
       ffmpeg
       pciutils
     ];
+
+    devlive.programs.notema.enable = true;
   };
 }
