@@ -107,6 +107,20 @@
             })
           ];
         };
+        hydra = lib.nixosSystem {
+          system = linuxSystem;
+          modules = [
+            ({ modulesPath, ... }: {
+              imports = [
+                (modulesPath + "/virtualisation/proxmox-lxc.nix")
+                ./modules/options
+                ./modules/nixos/lxc
+                ./profiles/infra/options.nix
+                ./nixos/hydra/configuration.nix
+              ];
+            })
+          ];
+        };
       };
       darwinConfigurations = {
         Astrawans-MacBook-Pro = nix-darwin.lib.darwinSystem {
