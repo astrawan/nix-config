@@ -7,6 +7,7 @@
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
     nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    attic.url = "github:zhaofengli/attic";
     helium-browser.url = "github:oxcl/nix-flake-helium-browser";
     helium-browser.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager/release-26.05";
@@ -28,6 +29,7 @@
       nixpkgs,
       nix-cachyos-kernel,
       nixos-wsl,
+      attic,
       helium-browser,
       home-manager,
       nix-darwin,
@@ -119,6 +121,21 @@
                 ./nixos/hydra/configuration.nix
               ];
             })
+          ];
+        };
+        attic = lib.nixosSystem {
+          system = linuxSystem;
+          modules = [
+            ({ modulesPath, ... }: {
+              imports = [
+                (modulesPath + "/virtualisation/proxmox-lxc.nix")
+                ./modules/options
+                ./modules/nixos/lxc
+                ./profiles/infra/options.nix
+                ./nixos/attic/configuration.nix
+              ];
+            })
+            attic.nixosModules.atticd
           ];
         };
       };
