@@ -16,7 +16,7 @@ in
         inotify-tools
       ]
       ++ (
-        if (config.devlive.features.desktop.type != null) then
+        if (config.devlive.programs.dbx-desktop.enable) then
           [
             pkgs.dbx-desktop
           ]

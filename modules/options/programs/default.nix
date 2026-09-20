@@ -3,6 +3,7 @@
     ./aegisub.nix
     ./bash.nix
     ./brave.nix
+    ./dbx-desktop.nix
     ./deja-dup.nix
     ./discord.nix
     ./eza.nix
