@@ -16,7 +16,6 @@ in
 
   devlive.features.desktop = {
     type = "noctalia";
-    enableTelegram = true;
     enableWhatsApp = true;
     extraHomePackages = with pkgs; [
       gimp
