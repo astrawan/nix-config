@@ -5,6 +5,7 @@
     enable = true;
     casks = [
       "gpg-suite"
+      "libreoffice"
       "tor-browser"
       "xquartz"
     ]
