@@ -13,11 +13,11 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
-    dbx.url = "github:t8y2/dbx/v0.6.16";
+    dbx.url = "github:t8y2/dbx/v0.6.31";
     dbx.inputs.nixpkgs.follows = "nixpkgs";
     noctalia.url = "github:noctalia-dev/noctalia-shell/legacy-v4";
     noctalia.inputs.nixpkgs.follows = "nixpkgs";
-    noctalia5.url = "github:noctalia-dev/noctalia-shell/v5.1.0";
+    noctalia5.url = "github:noctalia-dev/noctalia-shell/v5.2.1";
     noctalia5.inputs.nixpkgs.follows = "nixpkgs";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
