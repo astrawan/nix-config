@@ -354,9 +354,9 @@ in
               background_opacity = 0.8;
               border_width = 1.0;
               concave_edge_corners = false;
-              enabled = true;
+              enabled = false;
               margin_edge = 16;
-              monitors = [ "eDP-1" ];
+              monitor."eDP-1".enabled = true;
               position = "right";
               reserve_space = false;
               show_dots = true;
@@ -408,7 +408,9 @@ in
 
             osd = {
               background_opacity = 0.8;
-              lock_keys = false;
+              kinds = {
+                lock_keys = true;
+              };
               monitors = [ "eDP-1" ];
               offset_y = 16;
               orientation = "horizontal";
@@ -419,12 +421,6 @@ in
               font_family = "Adwaita Mono";
 
               panel = {
-                attach_clipboard = false;
-                attach_control_center = false;
-                attach_launcher = false;
-                attach_session = false;
-                attach_wallpaper = false;
-                clipboard_placement = "auto";
                 control_center_placement = "floating";
                 floating_offset = 16;
                 launcher_position = "auto";
@@ -478,10 +474,6 @@ in
               };
             };
 
-            weather = {
-              auto_locate = true;
-            };
-
             widget = {
               control-center = {
                 custom_image = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
@@ -490,27 +482,21 @@ in
                 scale = 1.5;
               };
               cpu = {
-                show_label = false;
                 show_value = false;
               };
               network = {
                 show_label = false;
-                show_value = false;
               };
               network_rx = {
-                show_label = false;
                 show_value = false;
               };
               network_tx = {
-                show_label = false;
                 show_value = false;
               };
               ram = {
-                show_label = false;
                 show_value = false;
               };
               temp = {
-                show_label = false;
                 show_value = false;
               };
               workspaces = {
