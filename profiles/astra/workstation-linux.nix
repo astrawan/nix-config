@@ -17,6 +17,7 @@ in
   devlive.features.desktop = {
     type = "noctalia";
     enableWhatsApp = true;
+    defaultWebBrowser = "brave";
     extraHomePackages = with pkgs; [
       gimp
       gradia
@@ -46,6 +47,7 @@ in
   devlive.features.uutils.enable = true;
 
   devlive.programs.aegisub.enable = true;
+  devlive.programs.brave.enable = true;
   devlive.programs.helium.enable = true;
   devlive.programs.keystore-explorer.enable = true;
   devlive.programs.qbittorrent.enable = lib.mkIf (desktop.type == "noctalia") true;
